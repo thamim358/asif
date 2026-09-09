@@ -57,9 +57,21 @@ export function SeptemberCalendar() {
       id="engagement-september-calendar"
       className="w-full max-w-xl mx-auto my-8 sm:my-10 select-none"
     >
-      <div className="relative bg-white/95 rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-[#EADBCA] shadow-[0_6px_24px_rgba(95,44,18,0.06)] overflow-hidden">
+      <div className="relative isolate bg-white/95 rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-[#EADBCA] shadow-[0_6px_24px_rgba(95,44,18,0.06)] overflow-hidden">
         {/* Top Decorative Wine & Gold Border Stripe */}
         <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#721B29] via-[#C9A048] to-[#721B29]" />
+        <img
+          src="/flowers.avif"
+          alt=""
+          aria-hidden="true"
+          className="absolute -z-10 -top-12 -right-12 w-32 sm:w-44 rotate-[26deg] opacity-60 pointer-events-none select-none"
+        />
+        <img
+          src="/flowers.avif"
+          alt=""
+          aria-hidden="true"
+          className="absolute -z-10 -bottom-12 -left-12 w-32 sm:w-44 -rotate-[154deg] opacity-60 pointer-events-none select-none"
+        />
 
         {/* Calendar Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-4 mb-5 border-b border-[#EAE1D3]">
