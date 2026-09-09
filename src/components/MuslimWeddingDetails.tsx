@@ -225,7 +225,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
               {/* Header: Responsive Pill & Time */}
               <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 mb-3 sm:mb-4">
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <span className="w-5 h-5 rounded-full bg-[#721B29] border border-[#721B29]/30 flex items-center justify-center text-[#721B29] text-[10px] font-cinzel font-bold shrink-0">
+                  <span className="relative z-10 w-5 h-5 rounded-full bg-[#F9E8EC] border border-[#C98A96] flex items-center justify-center text-[#721B29] text-[10px] font-cinzel font-bold shrink-0">
                     I
                   </span>
                   <span className="font-cinzel text-[10.5px] sm:text-xs tracking-[0.14em] sm:tracking-[0.18em] text-[#721B29] uppercase font-semibold px-2.5 py-1 rounded-full bg-[#F9E8EC] border border-[#C98A96] shrink-0">
@@ -255,7 +255,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
                   Welcoming Sharbat &amp; Morning Refreshments
                 </span>
               </div>
-              <span className="font-cinzel tracking-wider text-[#721B29] font-semibold shrink-0 bg-[#721B29] px-2 py-0.5 rounded border border-[#721B29]/20 text-[11px] sm:text-xs">
+              <span className="relative z-10 font-cinzel tracking-wider text-white font-semibold shrink-0 bg-[#721B29] px-2 py-0.5 rounded border border-[#58141F] text-[11px] sm:text-xs">
                 9:00 AM
               </span>
             </div>
@@ -289,7 +289,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
               {/* Header: Responsive Pill & Time */}
               <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 mb-3 sm:mb-4">
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <span className="w-5 h-5 rounded-full bg-[#721B29]/15 border border-[#721B29]/30 flex items-center justify-center text-[#721B29] text-[10px] font-cinzel font-bold shrink-0">
+                  <span className="relative z-10 w-5 h-5 rounded-full bg-[#F9E8EC] border border-[#C98A96] flex items-center justify-center text-[#721B29] text-[10px] font-cinzel font-bold shrink-0">
                     II
                   </span>
                   <span className="font-cinzel text-[10.5px] sm:text-xs tracking-[0.14em] sm:tracking-[0.18em] text-[#721B29] uppercase font-semibold px-2.5 py-1 rounded-full bg-[#F9E8EC] border border-[#C98A96] shrink-0">
@@ -319,7 +319,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
                   Traditional Muslim Biryani Lunch Feast
                 </span> */}
               </div>
-              <span className="font-cinzel tracking-wider text-[#721B29] font-semibold shrink-0 bg-[#721B29]/10 px-2 py-0.5 rounded border border-[#721B29]/20 text-[11px] sm:text-xs">
+              <span className="relative z-10 font-cinzel tracking-wider text-white font-semibold shrink-0 bg-[#721B29] px-2 py-0.5 rounded border border-[#58141F] text-[11px] sm:text-xs">
                 12:30 PM
               </span>
             </div>
