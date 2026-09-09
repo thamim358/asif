@@ -7,17 +7,20 @@ interface Props {
   isRevealed?: boolean;
 }
 
-export function HeroSection({ onScrollToDiscover, isRevealed = true }: Props) {
+export function HeroSection({
+  onScrollToDiscover,
+  isRevealed = true,
+}: Props) {
   return (
     <section
       id="hero-section"
-      className="relative min-h-screen flex flex-col items-center justify-between px-0 pt-0 pb-8 text-center z-10 w-full"
+      className="relative min-h-[100dvh] flex flex-col items-center justify-between px-0 pt-0 pb-8 text-center z-10 w-full"
     >
       {/* Main Islamic Cusped Arch Card matching the user's reference image */}
       <motion.div
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0 }}
+        animate={isRevealed ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 2.2, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
         className="w-full flex justify-center"
       >
         <IslamicArchCard isRevealed={isRevealed} />
@@ -26,8 +29,8 @@ export function HeroSection({ onScrollToDiscover, isRevealed = true }: Props) {
       {/* Clean Minimalist Quick Actions & Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.8 }}
+        animate={isRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+        transition={{ duration: 1.8, delay: 2.2, ease: [0.16, 1, 0.3, 1] }}
         className="pt-4 pb-2 px-4 flex flex-col items-center z-20"
       >
         <button

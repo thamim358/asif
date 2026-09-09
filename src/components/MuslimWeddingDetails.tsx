@@ -52,18 +52,19 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
   };
 
   return (
-    <section id="muslim-wedding-details" className="relative w-full max-w-4xl mx-auto px-4 sm:px-8 py-12 sm:py-20 z-10">
+    <section id="muslim-wedding-details" className="relative w-full max-w-4xl mx-auto px-4 sm:px-8 py-10 sm:py-16 z-10">
       {/* =========================================================
           SECTION 1: THE SACRED INVITATION TEXT & FAMILY ANNOUNCEMENT
-          Scroll-triggered cinematic entrance with staggered reveals
+          Smooth GPU-accelerated entrance with subtle transforms
           ========================================================= */}
-      <div className="text-center mb-16 sm:mb-20">
+      <div className="text-center mb-14 sm:mb-18">
         {/* Sacred Quranic Opening */}
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, amount: 0.05 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="transform-gpu"
         >
           <p
             dir="rtl"
@@ -83,18 +84,18 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
         <motion.div
           initial={{ scaleX: 0, opacity: 0 }}
           whileInView={{ scaleX: 1, opacity: 1 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="w-24 h-[1.5px] bg-gradient-to-r from-transparent via-[#C9A048]/60 to-transparent mx-auto my-7"
+          viewport={{ once: true, amount: 0.05 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
+          className="w-24 h-[1.5px] bg-gradient-to-r from-transparent via-[#C9A048]/60 to-transparent mx-auto my-6"
         />
 
         {/* Formal Family Invitation */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.95, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="space-y-3 max-w-xl mx-auto"
+          viewport={{ once: true, amount: 0.05 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
+          className="space-y-3 max-w-xl mx-auto transform-gpu"
         >
           <p className="font-cinzel text-xs sm:text-sm tracking-[0.24em] text-[#8C7654] uppercase">
             Together with their families
@@ -102,7 +103,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
           <p className="font-luxury italic text-base sm:text-lg md:text-xl text-[#524436]">
             cordially invite you to grace the auspicious occasion and celebrate the
           </p>
-          <div className="py-2">
+          <div className="py-1">
             <h3 className="font-cinzel text-xl sm:text-2xl md:text-3xl tracking-[0.24em] sm:tracking-[0.28em] text-[#721B29] font-semibold uppercase">
               Engagement Ceremony
             </h3>
@@ -113,16 +114,16 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
 
           {/* Couple Names Cinematic Highlight */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.96, y: 16 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 1.0, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="pt-2"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.05 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
+            className="pt-2 transform-gpu"
           >
             <h2 className="font-cinzel text-2xl sm:text-3xl md:text-4xl tracking-[0.22em] text-[#3D3022] uppercase font-semibold">
               Thamim Ansari
             </h2>
-            <p className="font-luxury italic text-sm sm:text-base text-[#A3927C] my-1">&</p>
+            <p className="font-luxury italic text-sm sm:text-base text-[#A3927C] my-1">&amp;</p>
             <h2 className="font-cinzel text-2xl sm:text-3xl md:text-4xl tracking-[0.22em] text-[#3D3022] uppercase font-semibold">
               Nihal
             </h2>
@@ -130,11 +131,11 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
 
           {/* Authentic Islamic Dua for the Newly Engaged */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.95, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="pt-6 pb-2"
+            viewport={{ once: true, amount: 0.05 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
+            className="pt-5 pb-2 transform-gpu"
           >
             <p
               dir="rtl"
@@ -152,14 +153,14 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
       {/* =========================================================
           SECTION 2: CEREMONY SCHEDULE & AUSPICIOUS DATE CALENDAR
           ========================================================= */}
-      <div className="mb-16 sm:mb-20">
+      <div className="mb-14 sm:mb-18">
         {/* Schedule Header & Auspicious Date Pill */}
         <motion.div
-          initial={{ opacity: 0, y: 26 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-6"
+          viewport={{ once: true, amount: 0.05 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="text-center mb-6 transform-gpu"
         >
           <p className="font-cinzel text-xs sm:text-sm tracking-[0.3em] text-[#721B29] uppercase font-bold">
             Saturday Morning Program
@@ -167,7 +168,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
           <h3 className="font-cinzel text-xl sm:text-2xl md:text-3xl tracking-[0.22em] text-[#2E070F] uppercase font-bold mt-1.5">
             Ceremony Schedule &amp; Date
           </h3>
-          <div className="inline-flex flex-col items-center gap-1 mt-2.5 px-5 py-2.5 rounded-2xl bg-[#721B29]/10 border border-[#721B29]/30 shadow-xs">
+          <div className="inline-flex flex-col items-center gap-1 mt-2.5 px-5 py-2.5 rounded-2xl bg-[#721B29]/8 border border-[#721B29]/25 shadow-xs">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#721B29] shrink-0 animate-pulse" />
               <p className="font-cinzel text-xs sm:text-sm text-[#4A0D17] font-bold tracking-wider">
@@ -183,29 +184,27 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
           </div>
         </motion.div>
 
-        {/* =========================================================
-            THE SEPTEMBER 2026 CALENDAR & COUNTDOWN
-            Scroll-triggered entrance with subtle elevation
-            ========================================================= */}
+        {/* The September 2026 Calendar & Countdown */}
         <motion.div
-          initial={{ opacity: 0, y: 32, scale: 0.98 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 1.0, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.05 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="transform-gpu"
         >
           <SeptemberCalendar />
         </motion.div>
 
-        {/* Engagement Schedule Cards with Staggered Entrance */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-10">
+        {/* Engagement Schedule Cards with Smooth, Jitter-Free Entrance */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-8">
           {/* Card 1: Ring Exchange & Alliance */}
           <motion.div
-            initial={{ opacity: 0, y: 35, x: -10 }}
-            whileInView={{ opacity: 1, y: 0, x: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.95, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ y: -4, transition: { duration: 0.25 } }}
-            className="relative bg-[#FCFAF4]/90 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-[#DFCEB7] shadow-[0_6px_20px_rgba(95,44,18,0.08)] flex flex-col justify-between overflow-hidden transition-shadow hover:shadow-[0_10px_28px_rgba(95,44,18,0.14)]"
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.05 }}
+            transition={{ duration: 0.65, delay: 0.1, ease: 'easeOut' }}
+            whileHover={{ y: -3, transition: { duration: 0.2 } }}
+            className="relative bg-white/95 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-[#EADBCA] shadow-[0_4px_16px_rgba(95,44,18,0.06)] flex flex-col justify-between overflow-hidden transition-shadow hover:shadow-[0_8px_24px_rgba(95,44,18,0.1)] transform-gpu"
           >
             {/* Top Red Wine & Gold Accent */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-[2px] bg-gradient-to-r from-transparent via-[#721B29]/60 to-transparent" />
@@ -222,7 +221,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
                   </span>
                 </div>
 
-                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F5ECE0] border border-[#DFCBB0] text-[11px] sm:text-xs font-cinzel text-[#721B29] tracking-wider shrink-0 ml-auto sm:ml-0 font-semibold">
+                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF5EE] border border-[#E7D6C2] text-[11px] sm:text-xs font-cinzel text-[#721B29] tracking-wider shrink-0 ml-auto sm:ml-0 font-semibold">
                   <Clock className="w-3.5 h-3.5 text-[#721B29] shrink-0" />
                   <span>9:00 AM Onwards</span>
                 </div>
@@ -252,12 +251,12 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
 
           {/* Card 2: Engagement Reception */}
           <motion.div
-            initial={{ opacity: 0, y: 35, x: 10 }}
-            whileInView={{ opacity: 1, y: 0, x: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.95, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            whileHover={{ y: -4, transition: { duration: 0.25 } }}
-            className="relative bg-[#FCFAF4]/90 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-[#DFCEB7] shadow-[0_6px_20px_rgba(95,44,18,0.08)] flex flex-col justify-between overflow-hidden transition-shadow hover:shadow-[0_10px_28px_rgba(95,44,18,0.14)]"
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.05 }}
+            transition={{ duration: 0.65, delay: 0.15, ease: 'easeOut' }}
+            whileHover={{ y: -3, transition: { duration: 0.2 } }}
+            className="relative bg-white/95 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-[#EADBCA] shadow-[0_4px_16px_rgba(95,44,18,0.06)] flex flex-col justify-between overflow-hidden transition-shadow hover:shadow-[0_8px_24px_rgba(95,44,18,0.1)] transform-gpu"
           >
             {/* Top Red Wine Accent */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-[2px] bg-gradient-to-r from-transparent via-[#721B29]/60 to-transparent" />
@@ -274,7 +273,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
                   </span>
                 </div>
 
-                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F5ECE0] border border-[#DFCBB0] text-[11px] sm:text-xs font-cinzel text-[#721B29] tracking-wider shrink-0 ml-auto sm:ml-0 font-semibold">
+                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF5EE] border border-[#E7D6C2] text-[11px] sm:text-xs font-cinzel text-[#721B29] tracking-wider shrink-0 ml-auto sm:ml-0 font-semibold">
                   <Clock className="w-3.5 h-3.5 text-[#721B29] shrink-0" />
                   <span>12:00 PM – 4:00 PM</span>
                 </div>
@@ -306,25 +305,18 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
 
       {/* =========================================================
           SECTION 3: VENUE & GOOGLE MAPS NAVIGATION
-          Scroll-triggered entrance for venue card and embedded map
           ========================================================= */}
       <motion.div
         id="venue-navigation-section"
-        initial={{ opacity: 0, y: 32 }}
+        initial={{ opacity: 0, y: 14 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-50px' }}
-        transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
-        className="mb-16 sm:mb-20"
+        viewport={{ once: true, amount: 0.05 }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
+        className="mb-14 sm:mb-18 transform-gpu"
       >
-        <div className="bg-[#FCFAF4]/95 backdrop-blur-sm rounded-3xl p-5 sm:p-8 md:p-10 border border-[#DECBB4] shadow-[0_6px_24px_rgba(95,44,18,0.08)]">
+        <div className="bg-white/95 rounded-3xl p-5 sm:p-8 md:p-10 border border-[#EADBCA] shadow-[0_6px_24px_rgba(95,44,18,0.06)]">
           {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center max-w-xl mx-auto"
-          >
+          <div className="text-center max-w-xl mx-auto">
             <div className="w-12 h-12 rounded-full bg-[#721B29]/10 border border-[#721B29]/30 flex items-center justify-center text-[#721B29] mx-auto mb-3.5 shadow-xs">
               <MapPin className="w-5 h-5" />
             </div>
@@ -352,16 +344,10 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
                 ✦ Vyasarpadi, Chennai
               </span>
             </div>
-          </motion.div>
+          </div>
 
           {/* Interactive Embedded Google Map */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98, y: 20 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.95, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-7 rounded-2xl overflow-hidden border-2 border-[#E8DCCB] shadow-inner bg-[#F5EFE6] relative"
-          >
+          <div className="mt-7 rounded-2xl overflow-hidden border border-[#E8DCCB] shadow-inner bg-[#FAF7F2] relative">
             <div className="w-full h-[280px] sm:h-[360px] relative">
               <iframe
                 id="google-maps-embed-frame"
@@ -378,7 +364,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
             </div>
 
             {/* Bottom Map Bar with Full Address & Actions */}
-            <div className="p-3.5 sm:p-4 bg-[#FAF7F2] border-t border-[#E8DCCB] flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-xs">
+            <div className="p-3.5 sm:p-4 bg-[#FFFDF9] border-t border-[#E8DCCB] flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-xs">
               <div className="flex items-start gap-2.5 text-[#3D2E20] text-left w-full">
                 <MapPin className="w-4 h-4 text-[#721B29] shrink-0 mt-0.5" />
                 <div className="flex-1 min-w-0">
@@ -424,7 +410,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
                 </a>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Google Maps Legal Attribution */}
           <p className="text-[10px] text-[#A3927C] uppercase tracking-wider font-cinzel text-center mt-2">
@@ -432,13 +418,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
           </p>
 
           {/* Action Buttons: Primary Get Directions, Add to Calendar, Share */}
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.85, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="flex items-center justify-center gap-3 sm:gap-4 mt-6 flex-wrap"
-          >
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mt-6 flex-wrap">
             <a
               id="btn-get-directions"
               href={directionsUrl}
@@ -469,7 +449,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
               <Share2 className="w-4 h-4" />
               <span>{copied ? 'Copied!' : 'Share'}</span>
             </button>
-          </motion.div>
+          </div>
         </div>
       </motion.div>
 
@@ -477,14 +457,14 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
           SECTION 4: FOOTER (Replay Intro & Quiet Sign-off)
           ========================================================= */}
       <motion.div
-        initial={{ opacity: 0, y: 22 }}
+        initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-40px' }}
-        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        className="text-center pt-8 border-t border-[#EAE3D9]/70"
+        viewport={{ once: true, amount: 0.05 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className="text-center pt-8 border-t border-[#EAE3D9]/70 transform-gpu"
       >
         <p className="font-cinzel text-[11px] tracking-[0.28em] text-[#721B29] uppercase font-semibold">
-          Thamim Ansari & Nihal · Engagement Celebration
+          Thamim Ansari &amp; Nihal · Engagement Celebration
         </p>
         <p className="font-luxury italic text-xs text-[#9E8B75] mt-1">
           Saturday, 26 September 2026 · 9:00 AM – 4:00 PM · Royal Mahal, Chennai, India

@@ -57,7 +57,7 @@ export function SeptemberCalendar() {
       id="engagement-september-calendar"
       className="w-full max-w-xl mx-auto my-8 sm:my-10 select-none"
     >
-      <div className="relative bg-[#FAF5EC]/95 backdrop-blur-sm rounded-2xl sm:rounded-3xl p-5 sm:p-7 border-2 border-[#DBC7AB] shadow-[0_12px_36px_rgba(95,44,18,0.12)] overflow-hidden">
+      <div className="relative bg-white/95 rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-[#EADBCA] shadow-[0_6px_24px_rgba(95,44,18,0.06)] overflow-hidden">
         {/* Top Decorative Wine & Gold Border Stripe */}
         <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#721B29] via-[#C9A048] to-[#721B29]" />
 
@@ -176,7 +176,7 @@ export function SeptemberCalendar() {
           </div>
 
           <div className="grid grid-cols-4 gap-2 sm:gap-3 text-center">
-            <div className="bg-[#FAF5EE] border border-[#E5D7C7] rounded-xl p-2 sm:p-3 shadow-xs">
+            <div className="bg-[#FFFDF9] border border-[#EDE4D8] rounded-xl p-2 sm:p-3 shadow-xs">
               <span className="block font-cinzel text-xl sm:text-2xl font-bold text-[#2E070F]">
                 {timeLeft.days}
               </span>
@@ -184,7 +184,7 @@ export function SeptemberCalendar() {
                 Days
               </span>
             </div>
-            <div className="bg-[#FAF5EE] border border-[#E5D7C7] rounded-xl p-2 sm:p-3 shadow-xs">
+            <div className="bg-[#FFFDF9] border border-[#EDE4D8] rounded-xl p-2 sm:p-3 shadow-xs">
               <span className="block font-cinzel text-xl sm:text-2xl font-bold text-[#2E070F]">
                 {timeLeft.hours.toString().padStart(2, '0')}
               </span>
@@ -192,7 +192,7 @@ export function SeptemberCalendar() {
                 Hours
               </span>
             </div>
-            <div className="bg-[#FAF5EE] border border-[#E5D7C7] rounded-xl p-2 sm:p-3 shadow-xs">
+            <div className="bg-[#FFFDF9] border border-[#EDE4D8] rounded-xl p-2 sm:p-3 shadow-xs">
               <span className="block font-cinzel text-xl sm:text-2xl font-bold text-[#2E070F]">
                 {timeLeft.minutes.toString().padStart(2, '0')}
               </span>
@@ -200,7 +200,7 @@ export function SeptemberCalendar() {
                 Mins
               </span>
             </div>
-            <div className="bg-[#FAF5EE] border border-[#E5D7C7] rounded-xl p-2 sm:p-3 shadow-xs">
+            <div className="bg-[#FFFDF9] border border-[#EDE4D8] rounded-xl p-2 sm:p-3 shadow-xs">
               <span className="block font-cinzel text-xl sm:text-2xl font-bold text-[#721B29]">
                 {timeLeft.seconds.toString().padStart(2, '0')}
               </span>

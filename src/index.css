@@ -4,6 +4,17 @@
   html {
     scroll-behavior: smooth;
     font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+    -webkit-overflow-scrolling: touch;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: #FFFDF9;
+    overflow-x: hidden;
+    width: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 

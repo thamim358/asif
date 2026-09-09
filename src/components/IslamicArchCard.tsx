@@ -40,7 +40,7 @@ const DEVICE_PRESETS: Record<DeviceProfile, DevicePreset> = {
     avif: '/bg_iphone.avif',
     webp: '/bg_iphone.webp',
     // iPhone Mobile Specifications (optimized for 375px - 430px iPhone screens with 19.5:9 notch/island)
-    containerPadding: 'pt-[16.5%] pb-[10%] px-[12%] sm:px-[14%]',
+    containerPadding: 'pt-[8%] pb-[9%] px-[12%] sm:px-[14%]',
     contentMaxW: 'max-w-[290px] sm:max-w-[320px]',
     bismillahArabic: 'text-[12.5px] sm:text-[14px] leading-relaxed',
     bismillahEnglish: 'text-[9px] sm:text-[10px] tracking-[0.11em]',
@@ -52,8 +52,8 @@ const DEVICE_PRESETS: Record<DeviceProfile, DevicePreset> = {
     hijriDate: 'text-[10.5px] sm:text-[12px] tracking-[0.1em]',
     quranVerse: 'text-[12px] sm:text-[13.5px] leading-snug',
     quranSurah: 'text-[8px] sm:text-[9px] tracking-[0.2em]',
-    gapClass: 'gap-1 sm:gap-2',
-    dividerWidth: 'w-7 sm:w-10',
+    gapClass: 'gap-1.5 sm:gap-2.5',
+    dividerWidth: 'w-8 sm:w-11',
   },
   android: {
     id: 'android',
@@ -65,7 +65,7 @@ const DEVICE_PRESETS: Record<DeviceProfile, DevicePreset> = {
     avif: '/bg_android.avif',
     webp: '/bg_android.webp',
     // Android Mobile Specifications (optimized for tall, slender 20:9 Android screens e.g. Samsung / Pixel)
-    containerPadding: 'pt-[18%] pb-[11%] px-[14%] sm:px-[16%]',
+    containerPadding: 'pt-[9%] pb-[9.5%] px-[14%] sm:px-[16%]',
     contentMaxW: 'max-w-[280px] sm:max-w-[310px]',
     bismillahArabic: 'text-[12px] sm:text-[13px] leading-relaxed',
     bismillahEnglish: 'text-[8.5px] sm:text-[9.5px] tracking-[0.1em]',
@@ -77,8 +77,8 @@ const DEVICE_PRESETS: Record<DeviceProfile, DevicePreset> = {
     hijriDate: 'text-[10px] sm:text-[11.5px] tracking-[0.1em]',
     quranVerse: 'text-[11.5px] sm:text-[13px] leading-snug',
     quranSurah: 'text-[7.5px] sm:text-[8.5px] tracking-[0.18em]',
-    gapClass: 'gap-1.5 sm:gap-2',
-    dividerWidth: 'w-6 sm:w-9',
+    gapClass: 'gap-2 sm:gap-3',
+    dividerWidth: 'w-7 sm:w-10',
   },
   standard: {
     id: 'standard',
@@ -90,7 +90,7 @@ const DEVICE_PRESETS: Record<DeviceProfile, DevicePreset> = {
     avif: '/bg_mobile_hd.avif',
     webp: '/bg_mobile_hd.webp',
     // Standard Specifications
-    containerPadding: 'pt-[16%] pb-[10%] px-[13%] sm:px-[16%]',
+    containerPadding: 'pt-[8.5%] pb-[9%] px-[13%] sm:px-[16%]',
     contentMaxW: 'max-w-[330px] sm:max-w-[370px]',
     bismillahArabic: 'text-[13.5px] sm:text-[15.5px] leading-relaxed',
     bismillahEnglish: 'text-[9.5px] sm:text-[11px] tracking-[0.12em]',
@@ -102,7 +102,7 @@ const DEVICE_PRESETS: Record<DeviceProfile, DevicePreset> = {
     hijriDate: 'text-[11.5px] sm:text-[13px] tracking-[0.11em]',
     quranVerse: 'text-[13px] sm:text-[15px] leading-snug',
     quranSurah: 'text-[8.5px] sm:text-[10px] tracking-[0.22em]',
-    gapClass: 'gap-2 sm:gap-3',
+    gapClass: 'gap-2 sm:gap-3.5',
     dividerWidth: 'w-8 sm:w-12',
   },
 };
@@ -163,50 +163,19 @@ export function IslamicArchCard({ isRevealed = true }: Props) {
   return (
     <div
       id="islamic-arch-card-wrapper"
-      className="w-full max-w-[500px] sm:max-w-[520px] md:max-w-[560px] mx-auto px-1.5 sm:px-3 flex flex-col items-center select-none"
+      className="w-full max-w-full sm:max-w-[520px] md:max-w-[560px] mx-auto px-0 flex flex-col items-center select-none"
     >
       {/* 
-        Quick Device View Switcher
-        Allows immediate testing of exact iPhone vs Android mobile dimensions & left/right spacing
-      */}
-      <div className="flex items-center justify-center gap-1.5 mb-2 mt-0.5 z-20">
-        <button
-          type="button"
-          onClick={() => setProfile('ios')}
-          className={`px-3 py-1 rounded-full text-[10px] sm:text-[10.5px] font-cinzel tracking-[0.14em] uppercase transition-all flex items-center gap-1.5 cursor-pointer ${
-            profile === 'ios'
-              ? 'bg-[#721B29] text-white shadow-md font-bold ring-1 ring-[#ECC170]/60'
-              : 'bg-[#F6E1C2]/85 text-[#541421] border border-[#721B29]/25 hover:bg-[#721B29]/15'
-          }`}
-          aria-label="View iPhone mobile size"
-        >
-          <span>📱 iPhone Size</span>
-        </button>
-        <button
-          type="button"
-          onClick={() => setProfile('android')}
-          className={`px-3 py-1 rounded-full text-[10px] sm:text-[10.5px] font-cinzel tracking-[0.14em] uppercase transition-all flex items-center gap-1.5 cursor-pointer ${
-            profile === 'android'
-              ? 'bg-[#721B29] text-white shadow-md font-bold ring-1 ring-[#ECC170]/60'
-              : 'bg-[#F6E1C2]/85 text-[#541421] border border-[#721B29]/25 hover:bg-[#721B29]/15'
-          }`}
-          aria-label="View Android mobile size"
-        >
-          <span>🤖 Android Size</span>
-        </button>
-      </div>
-
-      {/* 
-        Container with device-tailored aspect ratio.
-        Fits entirely on screen with zero clipping or awkward gaps.
+        Container with device-tailored aspect ratio automatically detected.
+        Full edge-to-edge layout with zero border space, zero side padding, and zero top gap.
       */}
       <div
-        className={`relative w-full ${activePreset.aspectClass} max-h-[92vh] flex items-center justify-center`}
+        className={`relative w-full ${activePreset.aspectClass} flex items-center justify-center`}
       >
-        {/* The Card Container */}
+        {/* The Card Container - Sits flush at top and side edges */}
         <div
           id="islamic-arch-card-inner"
-          className="relative w-full h-full shadow-[0_20px_50px_rgba(46,14,20,0.22),0_4px_16px_rgba(46,14,20,0.12)] rounded-[4px] overflow-hidden bg-[#FAF3E6]"
+          className="relative w-full h-full rounded-none overflow-hidden bg-[#FFFDF9] transform-gpu"
         >
           {/* =========================================================
               4K AVIF BACKGROUND IMAGE (With WebP & standard AVIF fallback)
@@ -226,127 +195,7 @@ export function IslamicArchCard({ isRevealed = true }: Props) {
           </picture>
 
           {/* Gentle Center Lighting to Ensure Crisp Contrast on Any Screen */}
-          <div className="absolute inset-0 pointer-events-none bg-radial-[at_50%_50%] from-white/35 via-transparent to-black/10 z-10" />
-
-          {/* =========================================================
-              ROYAL GLOWING REVEAL ANIMATION (Triggered on video finish)
-              Radiant golden candlelight bloom & shimmering specular light sweep
-              ========================================================= */}
-          {isRevealed && (
-            <div className="absolute inset-0 pointer-events-none z-30 overflow-hidden">
-              {/* 1. Divine Radiant Center Candlelight Bloom */}
-              <motion.div
-                initial={{ scale: 0.3, opacity: 0 }}
-                animate={{
-                  scale: [0.3, 1.25, 2.3],
-                  opacity: [0, 0.95, 0.7, 0],
-                }}
-                transition={{
-                  duration: 2.2,
-                  times: [0, 0.25, 0.65, 1],
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 sm:w-96 sm:h-96 rounded-full"
-                style={{
-                  background:
-                    'radial-gradient(circle, rgba(255, 255, 245, 1) 0%, rgba(254, 235, 170, 0.9) 25%, rgba(229, 184, 105, 0.65) 50%, rgba(179, 131, 39, 0.3) 72%, transparent 88%)',
-                  mixBlendMode: 'screen',
-                }}
-              />
-
-              {/* 2. Golden Halo Shockwave Wave */}
-              <motion.div
-                initial={{ scale: 0.3, opacity: 0 }}
-                animate={{
-                  scale: [0.3, 1.4, 2.4],
-                  opacity: [0, 0.85, 0],
-                }}
-                transition={{
-                  duration: 1.8,
-                  times: [0, 0.3, 1],
-                  ease: 'easeOut',
-                }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 rounded-full border-2 border-[#E5B869]/80"
-                style={{
-                  boxShadow:
-                    '0 0 40px rgba(229, 184, 105, 0.6), inset 0 0 30px rgba(255, 235, 170, 0.5)',
-                }}
-              />
-
-              {/* 3. Golden Specular Light Sweep across the Arch & Names */}
-              <motion.div
-                initial={{ x: '-150%', opacity: 0 }}
-                animate={{
-                  x: ['-150%', '160%'],
-                  opacity: [0, 0.9, 0.9, 0],
-                }}
-                transition={{
-                  duration: 1.8,
-                  delay: 0.1,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="absolute inset-y-0 w-3/4 pointer-events-none rotate-12"
-                style={{
-                  background:
-                    'linear-gradient(90deg, transparent 0%, rgba(255, 245, 215, 0.25) 30%, rgba(255, 255, 255, 0.8) 50%, rgba(240, 195, 95, 0.55) 70%, transparent 100%)',
-                  mixBlendMode: 'screen',
-                }}
-              />
-
-              {/* 4. Golden Sparkling Light Flecks blooming outward */}
-              <div className="absolute inset-0 pointer-events-none">
-                {[
-                  { top: '38%', left: '30%', delay: 0.15, size: 'w-2.5 h-2.5' },
-                  { top: '35%', left: '70%', delay: 0.25, size: 'w-3 h-3' },
-                  { top: '48%', left: '24%', delay: 0.2, size: 'w-2 h-2' },
-                  { top: '50%', left: '76%', delay: 0.3, size: 'w-3 h-3' },
-                  { top: '62%', left: '40%', delay: 0.35, size: 'w-2.5 h-2.5' },
-                  { top: '60%', left: '60%', delay: 0.4, size: 'w-2 h-2' },
-                  { top: '26%', left: '50%', delay: 0.1, size: 'w-3.5 h-3.5' },
-                  { top: '74%', left: '50%', delay: 0.45, size: 'w-2.5 h-2.5' },
-                ].map((star, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{
-                      scale: [0, 1.4, 0],
-                      opacity: [0, 1, 0],
-                    }}
-                    transition={{
-                      duration: 1.2,
-                      delay: star.delay,
-                      ease: 'easeOut',
-                    }}
-                    className={`absolute ${star.size} -translate-x-1/2 -translate-y-1/2`}
-                    style={{ top: star.top, left: star.left }}
-                  >
-                    <div className="w-full h-full bg-[#FFF5D0] rotate-45 rounded-[1px] shadow-[0_0_12px_#ECC170]" />
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Gentle recurring specular sheen (runs gracefully in the background) */}
-          <motion.div
-            initial={{ x: '-140%', opacity: 0 }}
-            animate={{
-              x: ['-140%', '150%'],
-              opacity: [0, 0.3, 0.45, 0.2, 0],
-            }}
-            transition={{
-              duration: 3.2,
-              delay: 3.5,
-              ease: [0.25, 1, 0.5, 1],
-              repeat: Infinity,
-              repeatDelay: 8,
-            }}
-            className="absolute inset-y-0 w-1/2 pointer-events-none z-15 rotate-12"
-            style={{
-              background:
-                'linear-gradient(90deg, transparent 0%, rgba(255, 252, 240, 0.4) 50%, transparent 100%)',
-            }}
-          />
+          <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.45)_0%,transparent_65%)] z-10" />
 
           {/* =========================================================
               INVITATION CONTENT CENTERED IN THE SAFE INTERIOR ZONE
@@ -373,32 +222,43 @@ export function IslamicArchCard({ isRevealed = true }: Props) {
               }}
             />
 
-            {/* 1. BISMILLAH CALLIGRAPHY (Crisp, Top-Centered with left-right margins) */}
+            {/* 1. BISMILLAH CALLIGRAPHY & TOP SEPARATOR (Moved to top with generous spacing) */}
             <motion.div
               initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.4, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className={`w-full flex flex-col items-center justify-center ${activePreset.contentMaxW} mx-auto px-2`}
+              animate={isRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+              transition={{ duration: 1.8, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
+              className={`w-full flex flex-col items-center justify-center ${activePreset.contentMaxW} mx-auto px-2 mb-1.5 sm:mb-2.5 -mt-1 sm:-mt-1.5`}
             >
               <p
                 dir="rtl"
-                className={`font-arabic ${activePreset.bismillahArabic} text-[#2E070F] tracking-wider font-bold drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]`}
+                className={`font-arabic ${activePreset.bismillahArabic} text-[#2E070F] tracking-wider font-bold drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)] mb-2 sm:mb-3`}
               >
                 بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
               </p>
               <p
-                className={`font-luxury italic ${activePreset.bismillahEnglish} text-[#5C1A25] mt-0.5 mx-auto leading-normal font-medium`}
+                className={`font-luxury italic ${activePreset.bismillahEnglish} text-[#5C1A25] mx-auto leading-normal font-medium mb-2.5 sm:mb-3.5`}
               >
                 In the Name of Allah, the Most Gracious, the Most Merciful
               </p>
+
+              {/* The Royal Separator at Top: Red Wine & Gold Diamond */}
+              <div className="flex items-center justify-center gap-2 mt-0.5 sm:mt-1">
+                <div
+                  className={`${activePreset.dividerWidth} h-[1px] bg-gradient-to-r from-transparent to-[#721B29]/45`}
+                />
+                <div className="w-1.5 h-1.5 rotate-45 border border-[#B38327] bg-[#721B29]" />
+                <div
+                  className={`${activePreset.dividerWidth} h-[1px] bg-gradient-to-l from-transparent to-[#721B29]/45`}
+                />
+              </div>
             </motion.div>
 
             {/* 2. HEADER: "the ENGAGEMENT of" */}
             <motion.div
               initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col items-center px-2"
+              animate={isRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 6 }}
+              transition={{ duration: 1.8, delay: 1.7, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col items-center px-2 mt-1 sm:mt-1.5"
             >
               <span className={`font-luxury italic ${activePreset.headerTheOf} text-[#7A4952]`}>
                 the
@@ -415,9 +275,9 @@ export function IslamicArchCard({ isRevealed = true }: Props) {
 
             {/* 3. COUPLE NAMES: Stacked Vertically with dedicated device padding */}
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.6, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, y: 8 }}
+              animate={isRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
+              transition={{ duration: 2.0, delay: 2.0, ease: [0.16, 1, 0.3, 1] }}
               className={`flex flex-col items-center w-full my-0.5 px-3 ${activePreset.contentMaxW} mx-auto`}
             >
               <h1
@@ -435,13 +295,13 @@ export function IslamicArchCard({ isRevealed = true }: Props) {
               </div>
 
               <h1
-                className={`font-cinzel ${activePreset.coupleName} text-[#541421] font-bold uppercase leading-tight drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]`}
+                className={`font-cinzel ${activePreset.coupleName} text-[#541421] font-bold uppercase leading-tight drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)] mb-1 sm:mb-1.5`}
               >
                 Nihal
               </h1>
 
               {/* Gregorian Event Date */}
-              <div className="flex flex-col items-center mt-1.5 sm:mt-2.5 gap-0.5 text-center px-2">
+              <div className="flex flex-col items-center mt-2.5 sm:mt-3.5 gap-1.5 sm:gap-2 text-center px-2 mb-1 sm:mb-1.5">
                 <p
                   className={`font-cinzel ${activePreset.gregorianDate} text-[#4A0D17] font-bold uppercase drop-shadow-[0_1px_1px_rgba(255,255,255,0.85)]`}
                 >
@@ -456,22 +316,11 @@ export function IslamicArchCard({ isRevealed = true }: Props) {
               </div>
             </motion.div>
 
-            {/* Subtle Divider with Red Wine & Gold Diamond */}
-            <div className="flex items-center justify-center gap-2 my-0.5">
-              <div
-                className={`${activePreset.dividerWidth} h-[1px] bg-gradient-to-r from-transparent to-[#721B29]/40`}
-              />
-              <div className="w-1.5 h-1.5 rotate-45 border border-[#B38327] bg-[#721B29]" />
-              <div
-                className={`${activePreset.dividerWidth} h-[1px] bg-gradient-to-l from-transparent to-[#721B29]/40`}
-              />
-            </div>
-
             {/* 4. QURANIC VERSE with generous left/right breathing space */}
             <motion.div
               initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.6, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              animate={isRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 6 }}
+              transition={{ duration: 2.0, delay: 2.3, ease: [0.16, 1, 0.3, 1] }}
               className={`w-full flex flex-col items-center px-3 ${activePreset.contentMaxW} mx-auto`}
             >
               <p
