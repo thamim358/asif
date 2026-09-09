@@ -9,7 +9,6 @@ interface Props {
 export function CinematicVideoIntro({ onComplete }: Props) {
   // State: 'ready' (video showing frame 1, waiting for user to tap wax seal) -> 'playing' -> 'ended'
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isFadingOut, setIsFadingOut] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const completedRef = useRef(false);
@@ -17,13 +16,7 @@ export function CinematicVideoIntro({ onComplete }: Props) {
   const handleFinish = useCallback(() => {
     if (completedRef.current) return;
     completedRef.current = true;
-    if (videoRef.current) {
-      try {
-        videoRef.current.pause();
-      } catch {
-        // Ignore
-      }
-    }
+    // Notify parent to transition out the overlay smoothly
     onComplete();
   }, [onComplete]);
 
@@ -44,7 +37,6 @@ export function CinematicVideoIntro({ onComplete }: Props) {
   const handlePlayVideo = () => {
     if (isPlaying) return;
     setIsPlaying(true);
-    setIsFadingOut(false);
 
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
@@ -62,27 +54,26 @@ export function CinematicVideoIntro({ onComplete }: Props) {
     }
   };
 
-  // Video timeupdate tracking: detect final 1.3 seconds for smooth, gradual video fade-out
+  // Video timeupdate tracking: audio fade in final 0.8s and seamless trigger near completion
   const handleTimeUpdate = () => {
     if (!videoRef.current) return;
     const cur = videoRef.current.currentTime;
-    const dur = videoRef.current.duration || 5;
+    const dur = videoRef.current.duration || 4.8;
 
-    // Start video fade-out 1.2s before the end
-    const fadeThreshold = Math.max(dur - 1.2, 2.5);
-    if (cur >= fadeThreshold && !isFadingOut) {
-      setIsFadingOut(true);
-    }
-
-    // Smooth audio fadeout in the final second to prevent abrupt sound clipping
-    if (cur >= fadeThreshold && !isMuted) {
+    // Smooth audio fadeout in the final 0.8s to avoid harsh audio clipping
+    if (cur >= Math.max(dur - 0.8, 1.5) && !isMuted) {
       const remaining = Math.max(dur - cur, 0);
-      const factor = Math.max(remaining / 1.2, 0);
+      const factor = Math.max(remaining / 0.8, 0);
       try {
         videoRef.current.volume = Math.min(Math.max(factor, 0), 1);
       } catch {
-        // Safe fallback for mobile browsers where volume control is restricted
+        // Safe fallback for mobile browsers
       }
+    }
+
+    // Trigger dissolve 0.18s before physical video end to prevent browser video freeze / stutter
+    if (cur >= Math.max(dur - 0.18, 2.5)) {
+      handleFinish();
     }
   };
 
@@ -91,7 +82,7 @@ export function CinematicVideoIntro({ onComplete }: Props) {
     if (isPlaying) {
       const timer = setTimeout(() => {
         handleFinish();
-      }, 5400);
+      }, 5200);
       return () => clearTimeout(timer);
     }
   }, [isPlaying, handleFinish]);
@@ -108,12 +99,13 @@ export function CinematicVideoIntro({ onComplete }: Props) {
     <motion.div
       id="cinematic-video-intro"
       initial={{ opacity: 1 }}
+      animate={{ opacity: 1 }}
       exit={{
         opacity: 0,
-        filter: 'blur(10px)',
-        transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
+        transition: { duration: 0.95, ease: [0.22, 1, 0.36, 1] },
       }}
-      className="fixed inset-0 z-50 w-screen h-screen overflow-hidden bg-[#0A0806] flex items-center justify-center select-none"
+      style={{ willChange: 'opacity' }}
+      className="fixed inset-0 z-50 w-screen h-screen overflow-hidden bg-[#0A0806] flex items-center justify-center select-none pointer-events-auto"
     >
       {/* Ambient background glow & atmospheric vignette */}
       <div className="absolute inset-0 bg-radial from-[#1A140E]/80 via-[#0D0A08] to-[#050403] pointer-events-none" />
@@ -151,45 +143,6 @@ export function CinematicVideoIntro({ onComplete }: Props) {
           onClick={!isPlaying ? handlePlayVideo : undefined}
           className="w-full h-full object-cover cursor-pointer"
         />
-
-        {/* =========================================================
-            REALISTIC FADE & GLOW EFFECT AT THE LAST SECOND OF VIDEO
-            Gradual, filmic dissolve with warm golden-ivory candlelight
-            glow that blooms outwards smoothly instead of cutting abruptly
-            ========================================================= */}
-        <AnimatePresence>
-          {isFadingOut && (
-            <>
-              {/* 1. Warm Ivory-Parchment Soft Video Dissolve */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute inset-0 z-30 pointer-events-none"
-                style={{
-                  background:
-                    'radial-gradient(ellipse at 50% 50%, rgba(255, 252, 245, 0.98) 0%, rgba(246, 240, 230, 0.92) 45%, rgba(235, 224, 208, 0.85) 75%, rgba(114, 27, 41, 0.35) 100%)',
-                }}
-              />
-
-              {/* 2. Realistic Radiant Center Candlelight Glow Bloom */}
-              <motion.div
-                initial={{ scale: 0.6, opacity: 0 }}
-                animate={{
-                  scale: [0.6, 2.2, 3.4],
-                  opacity: [0, 0.95, 0.8],
-                }}
-                transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full z-35 pointer-events-none"
-                style={{
-                  background:
-                    'radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(252, 234, 178, 0.9) 25%, rgba(212, 165, 85, 0.55) 55%, transparent 75%)',
-                  filter: 'blur(20px)',
-                }}
-              />
-            </>
-          )}
-        </AnimatePresence>
 
         {/* =========================================================
             THE INVISIBLE BUTTON POSITIONED EXACTLY ON THE WAX SEAL

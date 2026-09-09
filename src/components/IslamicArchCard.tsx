@@ -165,7 +165,7 @@ export function IslamicArchCard() {
               INVITATION CONTENT CENTERED IN THE SAFE INTERIOR ZONE
               Gracefully spaced vertical typographic rhythm
               ========================================================= */}
-          <div className="relative inset-0 z-20 flex flex-col items-center justify-center text-center pt-[19%] pb-[13%] px-[8%] sm:px-[12%] overflow-hidden gap-2.5 sm:gap-3.5 h-full">
+          <div className="relative inset-0 z-20 flex flex-col items-center justify-center text-center pt-[17%] pb-[11%] px-[6%] sm:px-[9%] overflow-hidden gap-2 sm:gap-3 h-full">
             {/* Center Candlelight Warm Glow behind Names */}
             <motion.div
               animate={{
@@ -177,7 +177,7 @@ export function IslamicArchCard() {
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full pointer-events-none -z-1"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full pointer-events-none -z-1"
               style={{
                 background:
                   'radial-gradient(circle, rgba(255, 250, 230, 0.85) 0%, rgba(248, 235, 205, 0.35) 45%, transparent 70%)',
@@ -190,15 +190,15 @@ export function IslamicArchCard() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.4, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full flex flex-col items-center justify-center max-w-[240px] sm:max-w-[270px] mx-auto"
+              className="w-full flex flex-col items-center justify-center max-w-[280px] sm:max-w-[320px] mx-auto"
             >
               <p
                 dir="rtl"
-                className="font-arabic text-xs sm:text-sm md:text-base text-[#2E070F] tracking-wider leading-relaxed font-bold drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]"
+                className="font-arabic text-sm sm:text-base md:text-lg text-[#2E070F] tracking-wider leading-relaxed font-bold drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]"
               >
                 بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
               </p>
-              <p className="font-luxury italic text-[8.5px] sm:text-[9.5px] text-[#5C1A25] tracking-[0.14em] mt-1 max-w-[220px] mx-auto leading-normal font-medium">
+              <p className="font-luxury italic text-[10px] sm:text-[11.5px] md:text-xs text-[#5C1A25] tracking-[0.14em] mt-1 max-w-[260px] mx-auto leading-normal font-medium">
                 In the Name of Allah, the Most Gracious, the Most Merciful
               </p>
             </motion.div>
@@ -210,13 +210,13 @@ export function IslamicArchCard() {
               transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col items-center"
             >
-              <span className="font-luxury italic text-[11px] sm:text-[12px] text-[#7A4952] tracking-[0.25em]">
+              <span className="font-luxury italic text-xs sm:text-[13.5px] text-[#7A4952] tracking-[0.25em]">
                 the
               </span>
-              <h2 className="font-cinzel text-xs sm:text-sm md:text-base tracking-[0.32em] text-[#3D141C] uppercase font-bold my-0.5 sm:my-1">
+              <h2 className="font-cinzel text-sm sm:text-base md:text-lg tracking-[0.32em] text-[#3D141C] uppercase font-bold my-0.5 sm:my-1">
                 Engagement
               </h2>
-              <span className="font-luxury italic text-[11px] sm:text-[12px] text-[#7A4952] tracking-[0.25em]">
+              <span className="font-luxury italic text-xs sm:text-[13.5px] text-[#7A4952] tracking-[0.25em]">
                 of
               </span>
             </motion.div>
@@ -228,28 +228,28 @@ export function IslamicArchCard() {
               transition={{ duration: 1.6, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col items-center w-full my-0.5"
             >
-              <h1 className="font-cinzel text-xl sm:text-2xl md:text-3xl tracking-[0.18em] sm:tracking-[0.24em] text-[#541421] font-bold uppercase leading-tight drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
+              <h1 className="font-cinzel text-2xl sm:text-3xl md:text-4xl tracking-[0.18em] sm:tracking-[0.24em] text-[#541421] font-bold uppercase leading-tight drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]">
                 Thamim Ansari
               </h1>
 
               {/* Elegant Ampersand with pleasant vertical breathing space */}
               <div className="flex items-center justify-center my-1 sm:my-1.5">
-                <span className="font-luxury italic text-lg sm:text-xl md:text-2xl text-[#721B29] font-normal leading-none">
+                <span className="font-luxury italic text-xl sm:text-2xl md:text-3xl text-[#721B29] font-normal leading-none">
                   &amp;
                 </span>
               </div>
 
-              <h1 className="font-cinzel text-xl sm:text-2xl md:text-3xl tracking-[0.18em] sm:tracking-[0.24em] text-[#541421] font-bold uppercase leading-tight drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)]">
+              <h1 className="font-cinzel text-2xl sm:text-3xl md:text-4xl tracking-[0.18em] sm:tracking-[0.24em] text-[#541421] font-bold uppercase leading-tight drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]">
                 Nihal
               </h1>
 
               {/* Auspicious Date in Good Contrast Color - Vertical Layout */}
-              <div className="flex flex-col items-center mt-2 sm:mt-2.5 gap-0.5 sm:gap-1 text-center">
-                <p className="font-cinzel text-[9.5px] sm:text-[11px] text-[#4A0D17] font-bold tracking-[0.16em] uppercase drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
+              <div className="flex flex-col items-center mt-2.5 sm:mt-3 gap-0.5 sm:gap-1 text-center">
+                <p className="font-cinzel text-[11px] sm:text-[12.5px] md:text-sm text-[#4A0D17] font-bold tracking-[0.16em] uppercase drop-shadow-[0_1px_1px_rgba(255,255,255,0.85)]">
                   Saturday, 26 September 2026
                 </p>
                 {/* Islamic Hijri Date - Vertically Stacked Below */}
-                <p className="font-luxury italic text-[10px] sm:text-[11.5px] text-[#5A1421] font-bold tracking-[0.12em] drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
+                <p className="font-luxury italic text-[11.5px] sm:text-[13px] md:text-[14px] text-[#5A1421] font-bold tracking-[0.12em] drop-shadow-[0_1px_1px_rgba(255,255,255,0.85)]">
                   14 Rabi&apos; al-Awwal 1448 AH
                 </p>
               </div>
@@ -257,9 +257,9 @@ export function IslamicArchCard() {
 
             {/* Subtle Divider with Red Wine & Gold Diamond */}
             <div className="flex items-center justify-center gap-2 my-0.5 sm:my-1">
-              <div className="w-8 sm:w-12 h-[1px] bg-gradient-to-r from-transparent to-[#721B29]/40" />
+              <div className="w-9 sm:w-14 h-[1px] bg-gradient-to-r from-transparent to-[#721B29]/40" />
               <div className="w-1.5 h-1.5 rotate-45 border border-[#B38327] bg-[#721B29]" />
-              <div className="w-8 sm:w-12 h-[1px] bg-gradient-to-l from-transparent to-[#721B29]/40" />
+              <div className="w-9 sm:w-14 h-[1px] bg-gradient-to-l from-transparent to-[#721B29]/40" />
             </div>
 
             {/* 4. QURANIC VERSE */}
@@ -269,10 +269,10 @@ export function IslamicArchCard() {
               transition={{ duration: 1.6, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="w-full flex flex-col items-center"
             >
-              <p className="font-luxury italic text-xs sm:text-sm md:text-base text-[#42151D] font-medium leading-snug px-1 drop-shadow-[0_1px_1px_rgba(255,255,255,0.7)]">
+              <p className="font-luxury italic text-sm sm:text-base md:text-lg text-[#42151D] font-medium leading-snug px-1 drop-shadow-[0_1px_2px_rgba(255,255,255,0.85)]">
                 “And We created you in pairs”
               </p>
-              <p className="font-cinzel text-[8.5px] sm:text-[9.5px] tracking-[0.24em] text-[#80424D] mt-1 uppercase font-medium">
+              <p className="font-cinzel text-[9.5px] sm:text-[10.5px] md:text-xs tracking-[0.24em] text-[#80424D] mt-1 uppercase font-semibold">
                 Surah An-Naba (78 : 8)
               </p>
             </motion.div>
