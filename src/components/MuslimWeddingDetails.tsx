@@ -18,18 +18,32 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
   const mapsSearchUrl = `https://www.google.com/maps/search/?api=1&query=${encodedVenue}`;
   const embedMapUrl = `https://maps.google.com/maps?q=${encodedVenue}&t=&z=16&ie=UTF8&iwloc=&output=embed`;
 
-  const handleShare = () => {
+  const handleShare = async () => {
     const shareText =
       'Dear family and friends, you are warmly invited to celebrate the engagement of Thamim Ansari and Nihal on Saturday, 26 September 2026, from 10:00 AM to 2:00 PM at Royal Mahal, Chennai.';
+    const shareData = {
+      title: 'Thamim & Nihal - Engagement Invitation',
+      text: shareText,
+      url: window.location.href,
+    };
 
     if (navigator.share) {
-      navigator
-        .share({
-          title: 'Thamim & Nihal - Engagement Invitation',
-          text: shareText,
-          url: window.location.href,
-        })
-        .catch(() => {});
+      try {
+        const imageResponse = await fetch('/engagement_share.png');
+        const imageBlob = await imageResponse.blob();
+        const imageFile = new File([imageBlob], 'thamim-nihal-engagement.png', {
+          type: 'image/png',
+        });
+
+        if (navigator.canShare?.({ files: [imageFile] })) {
+          await navigator.share({ ...shareData, files: [imageFile] });
+          return;
+        }
+      } catch {
+        // File sharing is optional; the URL preview remains available below.
+      }
+
+      navigator.share(shareData).catch(() => {});
     } else {
       navigator.clipboard.writeText(`${shareText}\n\n${window.location.href}`);
       setCopied(true);
