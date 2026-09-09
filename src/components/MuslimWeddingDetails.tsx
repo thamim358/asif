@@ -204,7 +204,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
             viewport={{ once: true, amount: 0.05 }}
             transition={{ duration: 0.65, delay: 0.1, ease: 'easeOut' }}
             whileHover={{ y: -3, transition: { duration: 0.2 } }}
-            className="relative bg-white/95 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-[#EADBCA] shadow-[0_4px_16px_rgba(95,44,18,0.06)] flex flex-col justify-between overflow-hidden transition-shadow hover:shadow-[0_8px_24px_rgba(95,44,18,0.1)] transform-gpu"
+            className="relative isolate bg-white/95 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-[#EADBCA] shadow-[0_4px_16px_rgba(95,44,18,0.06)] flex flex-col justify-between overflow-hidden transition-shadow hover:shadow-[0_8px_24px_rgba(95,44,18,0.1)] transform-gpu"
           >
             {/* Top Red Wine & Gold Accent */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-[2px] bg-gradient-to-r from-transparent via-[#721B29]/60 to-transparent" />
@@ -212,13 +212,13 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
               src="/flowers.avif"
               alt=""
               aria-hidden="true"
-              className="absolute -top-10 -left-10 w-28 sm:w-36 rotate-[18deg] opacity-70 pointer-events-none select-none"
+              className="absolute -z-10 -top-10 -left-10 w-28 sm:w-36 rotate-[18deg] opacity-70 pointer-events-none select-none"
             />
             <img
               src="/flowers.avif"
               alt=""
               aria-hidden="true"
-              className="absolute -right-10 -bottom-10 w-28 sm:w-36 -rotate-[162deg] opacity-70 pointer-events-none select-none"
+              className="absolute -z-10 -right-10 -bottom-10 w-28 sm:w-36 -rotate-[162deg] opacity-70 pointer-events-none select-none"
             />
 
             <div>
@@ -268,7 +268,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
             viewport={{ once: true, amount: 0.05 }}
             transition={{ duration: 0.65, delay: 0.15, ease: 'easeOut' }}
             whileHover={{ y: -3, transition: { duration: 0.2 } }}
-            className="relative bg-white/95 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-[#EADBCA] shadow-[0_4px_16px_rgba(95,44,18,0.06)] flex flex-col justify-between overflow-hidden transition-shadow hover:shadow-[0_8px_24px_rgba(95,44,18,0.1)] transform-gpu"
+            className="relative isolate bg-white/95 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 border border-[#EADBCA] shadow-[0_4px_16px_rgba(95,44,18,0.06)] flex flex-col justify-between overflow-hidden transition-shadow hover:shadow-[0_8px_24px_rgba(95,44,18,0.1)] transform-gpu"
           >
             {/* Top Red Wine Accent */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-[2px] bg-gradient-to-r from-transparent via-[#721B29]/60 to-transparent" />
@@ -276,13 +276,13 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
               src="/flowers.avif"
               alt=""
               aria-hidden="true"
-              className="absolute -top-10 -right-10 w-28 sm:w-36 -rotate-[24deg] opacity-70 pointer-events-none select-none"
+              className="absolute -z-10 -top-10 -right-10 w-28 sm:w-36 -rotate-[24deg] opacity-70 pointer-events-none select-none"
             />
             <img
               src="/flowers.avif"
               alt=""
               aria-hidden="true"
-              className="absolute -bottom-10 -left-10 w-28 sm:w-36 rotate-[155deg] opacity-70 pointer-events-none select-none"
+              className="absolute -z-10 -bottom-10 -left-10 w-28 sm:w-36 rotate-[155deg] opacity-70 pointer-events-none select-none"
             />
 
             <div>
@@ -338,18 +338,18 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
         transition={{ duration: 0.7, ease: 'easeOut' }}
         className="mb-14 sm:mb-18 transform-gpu"
       >
-        <div className="relative overflow-hidden bg-white/95 rounded-3xl p-5 sm:p-8 md:p-10 border border-[#EADBCA] shadow-[0_6px_24px_rgba(95,44,18,0.06)]">
+        <div className="relative isolate overflow-hidden bg-white/95 rounded-3xl p-5 sm:p-8 md:p-10 border border-[#EADBCA] shadow-[0_6px_24px_rgba(95,44,18,0.06)]">
           <img
             src="/flowers.avif"
             alt=""
             aria-hidden="true"
-            className="absolute -top-16 -left-16 w-40 sm:w-52 rotate-[22deg] opacity-60 pointer-events-none select-none"
+            className="absolute -z-10 -top-16 -left-16 w-40 sm:w-52 rotate-[22deg] opacity-60 pointer-events-none select-none"
           />
           <img
             src="/flowers.avif"
             alt=""
             aria-hidden="true"
-            className="absolute -right-16 -bottom-16 w-40 sm:w-52 -rotate-[158deg] opacity-60 pointer-events-none select-none"
+            className="absolute -z-10 -right-16 -bottom-16 w-40 sm:w-52 -rotate-[158deg] opacity-60 pointer-events-none select-none"
           />
           {/* Header */}
           <div className="text-center max-w-xl mx-auto">
