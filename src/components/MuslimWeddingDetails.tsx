@@ -223,12 +223,12 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
 
             <div>
               {/* Header: Responsive Pill & Time */}
-              <div className="flex flex-wrap items-center justify-between gap-2 mb-3 sm:mb-4">
+              <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 mb-3 sm:mb-4">
                 <div className="flex items-center gap-1.5 shrink-0">
                   <span className="w-5 h-5 rounded-full bg-[#721B29]/15 border border-[#721B29]/30 flex items-center justify-center text-[#721B29] text-[10px] font-cinzel font-bold shrink-0">
                     I
                   </span>
-                  <span className="font-cinzel text-[10.5px] sm:text-xs tracking-[0.14em] sm:tracking-[0.18em] text-[#721B29] uppercase font-semibold px-2.5 py-1 rounded-full bg-[#721B29]/10 border border-[#721B29]/20 shrink-0">
+                  <span className="font-cinzel text-[10.5px] sm:text-xs tracking-[0.14em] sm:tracking-[0.18em] text-[#721B29] uppercase font-semibold px-2.5 py-1 rounded-full bg-[#F9E8EC] border border-[#C98A96] shrink-0">
                     Morning Ceremony
                   </span>
                 </div>
@@ -248,10 +248,10 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
             </div>
 
             {/* Footer Meal Detail */}
-            <div className="pt-3.5 sm:pt-4 mt-4 sm:mt-5 border-t border-[#EAE3D9]/70 flex items-center justify-between gap-2 text-xs sm:text-sm">
+            <div className="relative z-10 pt-3.5 sm:pt-4 mt-4 sm:mt-5 border-t border-[#EAE3D9]/70 flex items-center justify-between gap-2 text-xs sm:text-sm">
               <div className="flex items-center gap-2 min-w-0">
                 <div className="w-1.5 h-1.5 rotate-45 bg-[#721B29]/70 shrink-0" />
-                <span className="font-luxury italic text-[#786857] truncate">
+                <span className="font-luxury italic text-[#786857] truncate bg-[#FFFDF9] px-1 rounded">
                   Welcoming Sharbat &amp; Morning Refreshments
                 </span>
               </div>
@@ -287,12 +287,12 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
 
             <div>
               {/* Header: Responsive Pill & Time */}
-              <div className="flex flex-wrap items-center justify-between gap-2 mb-3 sm:mb-4">
+              <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 mb-3 sm:mb-4">
                 <div className="flex items-center gap-1.5 shrink-0">
                   <span className="w-5 h-5 rounded-full bg-[#721B29]/15 border border-[#721B29]/30 flex items-center justify-center text-[#721B29] text-[10px] font-cinzel font-bold shrink-0">
                     II
                   </span>
-                  <span className="font-cinzel text-[10.5px] sm:text-xs tracking-[0.14em] sm:tracking-[0.18em] text-[#721B29] uppercase font-semibold px-2.5 py-1 rounded-full bg-[#721B29]/10 border border-[#721B29]/20 shrink-0">
+                  <span className="font-cinzel text-[10.5px] sm:text-xs tracking-[0.14em] sm:tracking-[0.18em] text-[#721B29] uppercase font-semibold px-2.5 py-1 rounded-full bg-[#F9E8EC] border border-[#C98A96] shrink-0">
                     Royal Banquet
                   </span>
                 </div>
@@ -312,10 +312,10 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
             </div>
 
             {/* Footer Meal Detail */}
-            <div className="pt-3.5 sm:pt-4 mt-4 sm:mt-5 border-t border-[#EAE3D9]/70 flex items-center justify-between gap-2 text-xs sm:text-sm">
+            <div className="relative z-10 pt-3.5 sm:pt-4 mt-4 sm:mt-5 border-t border-[#EAE3D9]/70 flex items-center justify-between gap-2 text-xs sm:text-sm">
               <div className="flex items-center gap-2 min-w-0">
                 <div className="w-1.5 h-1.5 rotate-45 bg-[#721B29]/70 shrink-0" />
-                <span className="font-luxury italic text-[#786857] truncate">
+                <span className="font-luxury italic text-[#786857] truncate bg-[#FFFDF9] px-1 rounded">
                   Traditional Muslim Biryani Lunch Feast
                 </span>
               </div>
