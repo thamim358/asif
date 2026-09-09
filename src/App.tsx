@@ -34,7 +34,7 @@ export default function App() {
   };
 
   const handleReplayIntro = () => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    window.scrollTo({ top: 0, behavior: 'auto' });
     setShowFullCoverGlow(false);
     setPhase('intro');
   };

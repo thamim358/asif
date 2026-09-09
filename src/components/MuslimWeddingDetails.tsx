@@ -72,7 +72,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
           >
             وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا
           </p>
-          <p className="font-luxury italic text-xs sm:text-sm md:text-base text-[#7D7062] max-w-lg mx-auto leading-relaxed">
+          <p className="font-luxury italic text-xs sm:text-sm md:text-base text-[#721B29] font-medium max-w-lg mx-auto leading-relaxed">
             “And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquility with them, and He has put love and mercy between your hearts.”
           </p>
           <p className="font-cinzel text-[10px] sm:text-[11px] md:text-xs tracking-[0.25em] text-[#A3927C] uppercase mt-1.5">

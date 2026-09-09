@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback, MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Volume2, VolumeX } from 'lucide-react';
+import { Volume2, VolumeX, Sparkles } from 'lucide-react';
 
 interface Props {
   onComplete: () => void;
@@ -48,7 +48,7 @@ export function CinematicVideoIntro({ onComplete }: Props) {
         if (videoRef.current) {
           videoRef.current.muted = true;
           setIsMuted(true);
-          videoRef.current.play().catch(() => {});
+          videoRef.current.play().catch(handleFinish);
         }
       });
     }
@@ -112,7 +112,7 @@ export function CinematicVideoIntro({ onComplete }: Props) {
         transition: { duration: 1.1, ease: [0.22, 1, 0.36, 1] },
       }}
       style={{ willChange: 'opacity' }}
-      className="fixed inset-0 z-50 w-screen h-screen overflow-hidden bg-[#0A0806] flex items-center justify-center select-none pointer-events-auto"
+      className="fixed inset-0 z-50 w-screen h-screen min-h-[100dvh] h-[100dvh] overflow-hidden bg-[#0A0806] flex items-center justify-center select-none pointer-events-auto"
     >
       {/* Ambient background glow & atmospheric vignette */}
       <div className="absolute inset-0 bg-radial from-[#1A140E]/80 via-[#0D0A08] to-[#050403] pointer-events-none" />
@@ -148,6 +148,7 @@ export function CinematicVideoIntro({ onComplete }: Props) {
           onLoadedMetadata={handleLoadedMetadata}
           onTimeUpdate={handleTimeUpdate}
           onEnded={handleFinish}
+          onError={handleFinish}
           onClick={!isPlaying ? handlePlayVideo : handleFinish}
           className="w-full h-full object-cover cursor-pointer"
         />
@@ -183,9 +184,10 @@ export function CinematicVideoIntro({ onComplete }: Props) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.45, delay: 0.15 }}
-                className="absolute z-30 left-1/2 top-[62%] -translate-x-1/2 whitespace-nowrap pointer-events-none font-cinzel text-[9px] sm:text-[10px] tracking-[0.24em] uppercase text-[#F5E2C4] drop-shadow-[0_1px_3px_rgba(0,0,0,0.85)]"
+                className="absolute z-30 left-1/2 top-[62%] -translate-x-1/2 whitespace-nowrap pointer-events-none inline-flex items-center gap-1.5 rounded-full bg-[#FFF7F0]/85 px-3 py-1 font-cinzel text-[9px] sm:text-[10px] font-bold tracking-[0.2em] uppercase text-[#721B29] shadow-[0_2px_8px_rgba(46,7,15,0.45)]"
               >
-                Tap to Open
+                <Sparkles className="w-3 h-3 shrink-0 text-[#721B29]" />
+                <span>Tap to Open</span>
               </motion.p>
             </>
           )}

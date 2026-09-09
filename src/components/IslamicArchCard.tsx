@@ -324,7 +324,7 @@ export function IslamicArchCard({ isRevealed = true }: Props) {
               className={`w-full flex flex-col items-center px-3 ${activePreset.contentMaxW} mx-auto`}
             >
               <p
-                className={`font-luxury italic ${activePreset.quranVerse} text-[#42151D] font-medium drop-shadow-[0_1px_2px_rgba(255,255,255,0.85)]`}
+                className={`font-luxury italic ${activePreset.quranVerse} text-[#721B29] font-semibold drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]`}
               >
                 “And We created you in pairs”
               </p>
