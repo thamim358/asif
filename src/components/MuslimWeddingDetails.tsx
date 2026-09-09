@@ -315,9 +315,9 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
             <div className="relative z-10 pt-3.5 sm:pt-4 mt-4 sm:mt-5 border-t border-[#EAE3D9]/70 flex items-center justify-between gap-2 text-xs sm:text-sm">
               <div className="flex items-center gap-2 min-w-0">
                 <div className="w-1.5 h-1.5 rotate-45 bg-[#721B29]/70 shrink-0" />
-                <span className="font-luxury italic text-[#786857] truncate bg-[#FFFDF9] px-1 rounded">
+                {/* <span className="font-luxury italic text-[#786857] truncate bg-[#FFFDF9] px-1 rounded">
                   Traditional Muslim Biryani Lunch Feast
-                </span>
+                </span> */}
               </div>
               <span className="font-cinzel tracking-wider text-[#721B29] font-semibold shrink-0 bg-[#721B29]/10 px-2 py-0.5 rounded border border-[#721B29]/20 text-[11px] sm:text-xs">
                 12:30 PM
