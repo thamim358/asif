@@ -17,9 +17,9 @@ export function EventTimeline() {
       highlight: true,
     },
     {
-      title: 'Blessings & Photographs',
+      title: 'Blessings & Felicitations',
       time: '11:45 AM',
-      desc: 'Family blessings, felicitations & photography with the couple',
+      desc: 'Family blessings, felicitations with the couple',
       icon: Heart,
     },
     {
