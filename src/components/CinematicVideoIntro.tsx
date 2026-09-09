@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback, MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Volume2, VolumeX } from 'lucide-react';
+import { Volume2, VolumeX, Sparkles } from 'lucide-react';
 
 interface Props {
   onComplete: () => void;
@@ -10,13 +10,13 @@ export function CinematicVideoIntro({ onComplete }: Props) {
   // State: 'ready' (video showing frame 1, waiting for user to tap wax seal) -> 'playing' -> 'ended'
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  const [videoDuration, setVideoDuration] = useState(4.8);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const completedRef = useRef(false);
 
   const handleFinish = useCallback(() => {
     if (completedRef.current) return;
     completedRef.current = true;
-    // Notify parent to transition out the overlay smoothly
     onComplete();
   }, [onComplete]);
 
@@ -33,7 +33,7 @@ export function CinematicVideoIntro({ onComplete }: Props) {
     };
   }, []);
 
-  // Click on the invisible button over the wax seal (or anywhere on the video)
+  // Click on the invisible button over the wax seal
   const handlePlayVideo = () => {
     if (isPlaying) return;
     setIsPlaying(true);
@@ -54,16 +54,22 @@ export function CinematicVideoIntro({ onComplete }: Props) {
     }
   };
 
-  // Video timeupdate tracking: audio fade in final 0.8s and seamless trigger near completion
+  const handleLoadedMetadata = () => {
+    if (videoRef.current && videoRef.current.duration && !isNaN(videoRef.current.duration)) {
+      setVideoDuration(videoRef.current.duration);
+    }
+  };
+
+  // Video timeupdate tracking: audio fade in final 0.7s and seamless trigger near completion
   const handleTimeUpdate = () => {
     if (!videoRef.current) return;
     const cur = videoRef.current.currentTime;
-    const dur = videoRef.current.duration || 4.8;
+    const dur = videoRef.current.duration && !isNaN(videoRef.current.duration) ? videoRef.current.duration : videoDuration;
 
-    // Smooth audio fadeout in the final 0.8s to avoid harsh audio clipping
-    if (cur >= Math.max(dur - 0.8, 1.5) && !isMuted) {
+    // Smooth audio fadeout in the final 0.7s to avoid harsh audio clipping
+    if (cur >= Math.max(dur - 0.7, 1.5) && !isMuted) {
       const remaining = Math.max(dur - cur, 0);
-      const factor = Math.max(remaining / 0.8, 0);
+      const factor = Math.max(remaining / 0.7, 0);
       try {
         videoRef.current.volume = Math.min(Math.max(factor, 0), 1);
       } catch {
@@ -71,8 +77,8 @@ export function CinematicVideoIntro({ onComplete }: Props) {
       }
     }
 
-    // Trigger dissolve 0.18s before physical video end to prevent browser video freeze / stutter
-    if (cur >= Math.max(dur - 0.18, 2.5)) {
+    // Trigger dissolve 0.15s before physical video buffer end to prevent freeze or black flash
+    if (cur >= Math.max(dur - 0.15, 2.5)) {
       handleFinish();
     }
   };
@@ -80,12 +86,13 @@ export function CinematicVideoIntro({ onComplete }: Props) {
   // Safety fallback timer if onEnded event is missed
   useEffect(() => {
     if (isPlaying) {
+      const timeoutMs = (videoDuration || 4.8) * 1000 + 200;
       const timer = setTimeout(() => {
         handleFinish();
-      }, 5200);
+      }, timeoutMs);
       return () => clearTimeout(timer);
     }
-  }, [isPlaying, handleFinish]);
+  }, [isPlaying, videoDuration, handleFinish]);
 
   const toggleMute = (e: MouseEvent) => {
     e.stopPropagation();
@@ -102,7 +109,7 @@ export function CinematicVideoIntro({ onComplete }: Props) {
       animate={{ opacity: 1 }}
       exit={{
         opacity: 0,
-        transition: { duration: 0.95, ease: [0.22, 1, 0.36, 1] },
+        transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] },
       }}
       style={{ willChange: 'opacity' }}
       className="fixed inset-0 z-50 w-screen h-screen overflow-hidden bg-[#0A0806] flex items-center justify-center select-none pointer-events-auto"
@@ -138,9 +145,10 @@ export function CinematicVideoIntro({ onComplete }: Props) {
           poster="/first_frame.jpg"
           playsInline
           preload="auto"
+          onLoadedMetadata={handleLoadedMetadata}
           onTimeUpdate={handleTimeUpdate}
           onEnded={handleFinish}
-          onClick={!isPlaying ? handlePlayVideo : undefined}
+          onClick={!isPlaying ? handlePlayVideo : handleFinish}
           className="w-full h-full object-cover cursor-pointer"
         />
 
@@ -172,9 +180,20 @@ export function CinematicVideoIntro({ onComplete }: Props) {
           )}
         </AnimatePresence>
 
-        {/* Floating Sound Toggle during playback */}
+        {/* Controls during playback: Quick Skip and Mute Toggle */}
         {isPlaying && (
-          <div className="absolute top-4 right-4 z-40">
+          <div className="absolute top-4 inset-x-4 flex items-center justify-between z-40 pointer-events-auto">
+            {/* Direct Skip button to go next immediately */}
+            <button
+              onClick={handleFinish}
+              type="button"
+              className="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-[#ECC170]/40 text-[#F5E2C4] text-[11px] font-cinzel tracking-[0.18em] uppercase hover:bg-black/80 hover:text-white transition-all flex items-center gap-1.5 shadow-lg cursor-pointer"
+            >
+              <Sparkles className="w-3 h-3 text-[#ECC170]" />
+              <span>Open Invitation</span>
+            </button>
+
+            {/* Mute Toggle button */}
             <button
               onClick={toggleMute}
               className="w-9 h-9 rounded-full bg-black/60 backdrop-blur-md border border-[#721B29]/50 text-[#FCDFE5] flex items-center justify-center hover:bg-[#721B29]/80 transition-all shadow-lg cursor-pointer"

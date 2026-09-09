@@ -47,7 +47,10 @@ export default function App() {
         <OldPaperBackground />
 
         {/* Section 1: The Royal Islamic Arch Invitation Card */}
-        <HeroSection onScrollToDiscover={handleScrollToDiscover} />
+        <HeroSection
+          onScrollToDiscover={handleScrollToDiscover}
+          isRevealed={phase === 'revealed'}
+        />
 
         {/* Section 2: Clean Minimalist Muslim Wedding Details (Schedule, Venue, Blessings) */}
         <MuslimWeddingDetails onReplay={handleReplayIntro} />

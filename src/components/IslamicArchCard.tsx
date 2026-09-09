@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 
-export type DeviceProfile = 'ios' | 'android' | 'standard';
+export type DeviceProfile = 'standard' | 'ios' | 'android';
 
 interface DevicePreset {
   id: DeviceProfile;
@@ -43,7 +43,11 @@ const DEVICE_PRESETS: Record<DeviceProfile, DevicePreset> = {
   },
 };
 
-export function IslamicArchCard() {
+interface Props {
+  isRevealed?: boolean;
+}
+
+export function IslamicArchCard({ isRevealed = true }: Props) {
   const [profile, setProfile] = useState<DeviceProfile>('standard');
 
   // Silently detect device screen proportions & platform behind the scenes
@@ -85,37 +89,20 @@ export function IslamicArchCard() {
 
   return (
     <div
-      id="islamic-arch-invitation-container"
-      className="relative w-full max-w-full sm:max-w-[500px] md:max-w-[560px] mx-auto px-0 mt-0 mb-4 select-none"
+      id="islamic-arch-card-wrapper"
+      className="w-full max-w-[500px] sm:max-w-[520px] md:max-w-[560px] mx-auto px-1.5 sm:px-3 flex flex-col items-center select-none"
     >
-      {/* =========================================================
-          4K MOBILE INVITATION CARD FRAME
-          Preserves exact natural mobile ratio with zero distortion,
-          in full width edge-to-edge without top, left, or right spacing
-          ========================================================= */}
-      <div className="relative w-full overflow-visible">
-        {/* Living Glow Effect on desktop */}
-        <motion.div
-          animate={{
-            opacity: [0.45, 0.75, 0.45],
-            scale: [0.985, 1.02, 0.985],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          className="absolute -inset-2 sm:-inset-4 rounded-none sm:rounded-[2.6rem] pointer-events-none -z-20 hidden sm:block"
-          style={{
-            background:
-              'radial-gradient(ellipse at 50% 45%, rgba(201, 160, 72, 0.38) 0%, rgba(114, 27, 41, 0.3) 45%, rgba(88, 20, 31, 0.12) 70%, transparent 85%)',
-            filter: 'blur(30px)',
-          }}
-        />
-
-        {/* Card Main Shell - Full width edge-to-edge with 0 spacing on left, right, and top */}
+      {/* 
+        Container with device-tailored aspect ratio.
+        Fits entirely on screen with zero clipping or awkward gaps.
+      */}
+      <div
+        className={`relative w-full ${activePreset.aspectClass} max-h-[92vh] flex items-center justify-center`}
+      >
+        {/* The Card Container */}
         <div
-          className={`relative w-full ${activePreset.aspectClass} rounded-none sm:rounded-[2.4rem] shadow-[0_25px_60px_-15px_rgba(114,27,41,0.24),0_10px_25px_-5px_rgba(45,34,22,0.12)] border-x-0 sm:border-x-2 border-t-0 sm:border-t-2 border-b-2 sm:border-b-2 border-[#E7D6BE] overflow-hidden bg-[#FAF6EE] z-10`}
+          id="islamic-arch-card-inner"
+          className="relative w-full h-full shadow-[0_20px_50px_rgba(46,14,20,0.22),0_4px_16px_rgba(46,14,20,0.12)] rounded-[4px] overflow-hidden bg-[#FAF3E6]"
         >
           {/* =========================================================
               4K AVIF BACKGROUND IMAGE (With WebP & standard AVIF fallback)
@@ -137,142 +124,236 @@ export function IslamicArchCard() {
           <div className="absolute inset-0 pointer-events-none bg-radial-[at_50%_50%] from-white/35 via-transparent to-black/10 z-10" />
 
           {/* =========================================================
-              REALISTIC LIGHT SHEEN (Subtle specular light sweep)
-              Gently sweeps across the gold and parchment surface
+              ROYAL GLOWING REVEAL ANIMATION (Triggered on video finish)
+              Radiant golden candlelight bloom & shimmering specular light sweep
               ========================================================= */}
+          {isRevealed && (
+            <div className="absolute inset-0 pointer-events-none z-30 overflow-hidden">
+              {/* 1. Divine Radiant Center Candlelight Bloom */}
+              <motion.div
+                initial={{ scale: 0.3, opacity: 0 }}
+                animate={{
+                  scale: [0.3, 1.25, 2.3],
+                  opacity: [0, 0.95, 0.7, 0],
+                }}
+                transition={{
+                  duration: 2.2,
+                  times: [0, 0.25, 0.65, 1],
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 sm:w-96 sm:h-96 rounded-full"
+                style={{
+                  background:
+                    'radial-gradient(circle, rgba(255, 255, 245, 1) 0%, rgba(254, 235, 170, 0.9) 25%, rgba(229, 184, 105, 0.65) 50%, rgba(179, 131, 39, 0.3) 72%, transparent 88%)',
+                  mixBlendMode: 'screen',
+                }}
+              />
+
+              {/* 2. Golden Halo Shockwave Wave */}
+              <motion.div
+                initial={{ scale: 0.3, opacity: 0 }}
+                animate={{
+                  scale: [0.3, 1.4, 2.4],
+                  opacity: [0, 0.85, 0],
+                }}
+                transition={{
+                  duration: 1.8,
+                  times: [0, 0.3, 1],
+                  ease: 'easeOut',
+                }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 rounded-full border-2 border-[#E5B869]/80"
+                style={{
+                  boxShadow:
+                    '0 0 40px rgba(229, 184, 105, 0.6), inset 0 0 30px rgba(255, 235, 170, 0.5)',
+                }}
+              />
+
+              {/* 3. Golden Specular Light Sweep across the Arch & Names */}
+              <motion.div
+                initial={{ x: '-150%', opacity: 0 }}
+                animate={{
+                  x: ['-150%', '160%'],
+                  opacity: [0, 0.9, 0.9, 0],
+                }}
+                transition={{
+                  duration: 1.8,
+                  delay: 0.1,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="absolute inset-y-0 w-3/4 pointer-events-none rotate-12"
+                style={{
+                  background:
+                    'linear-gradient(90deg, transparent 0%, rgba(255, 245, 215, 0.25) 30%, rgba(255, 255, 255, 0.8) 50%, rgba(240, 195, 95, 0.55) 70%, transparent 100%)',
+                  mixBlendMode: 'screen',
+                }}
+              />
+
+              {/* 4. Golden Sparkling Light Flecks blooming outward */}
+              <div className="absolute inset-0 pointer-events-none">
+                {[
+                  { top: '38%', left: '30%', delay: 0.15, size: 'w-2.5 h-2.5' },
+                  { top: '35%', left: '70%', delay: 0.25, size: 'w-3 h-3' },
+                  { top: '48%', left: '24%', delay: 0.2, size: 'w-2 h-2' },
+                  { top: '50%', left: '76%', delay: 0.3, size: 'w-3 h-3' },
+                  { top: '62%', left: '40%', delay: 0.35, size: 'w-2.5 h-2.5' },
+                  { top: '60%', left: '60%', delay: 0.4, size: 'w-2 h-2' },
+                  { top: '26%', left: '50%', delay: 0.1, size: 'w-3.5 h-3.5' },
+                  { top: '74%', left: '50%', delay: 0.45, size: 'w-2.5 h-2.5' },
+                ].map((star, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{
+                      scale: [0, 1.4, 0],
+                      opacity: [0, 1, 0],
+                    }}
+                    transition={{
+                      duration: 1.2,
+                      delay: star.delay,
+                      ease: 'easeOut',
+                    }}
+                    className={`absolute ${star.size} -translate-x-1/2 -translate-y-1/2`}
+                    style={{ top: star.top, left: star.left }}
+                  >
+                    <div className="w-full h-full bg-[#FFF5D0] rotate-45 rounded-[1px] shadow-[0_0_12px_#ECC170]" />
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Gentle recurring specular sheen (runs gracefully in the background) */}
           <motion.div
-            initial={{ x: '-130%', opacity: 0 }}
+            initial={{ x: '-140%', opacity: 0 }}
             animate={{
-              x: ['-130%', '140%'],
-              opacity: [0, 0.35, 0.55, 0.25, 0],
+              x: ['-140%', '150%'],
+              opacity: [0, 0.3, 0.45, 0.2, 0],
             }}
             transition={{
-              duration: 3,
-              delay: 1.4,
+              duration: 3.2,
+              delay: 3.5,
               ease: [0.25, 1, 0.5, 1],
               repeat: Infinity,
-              repeatDelay: 9,
+              repeatDelay: 8,
             }}
             className="absolute inset-y-0 w-1/2 pointer-events-none z-15 rotate-12"
             style={{
               background:
-                'linear-gradient(90deg, transparent 0%, rgba(255, 252, 240, 0.45) 50%, transparent 100%)',
-              filter: 'blur(10px)',
+                'linear-gradient(90deg, transparent 0%, rgba(255, 252, 240, 0.4) 50%, transparent 100%)',
             }}
           />
 
           {/* =========================================================
               INVITATION CONTENT CENTERED IN THE SAFE INTERIOR ZONE
-              Gracefully spaced vertical typographic rhythm
+              Gracefully spaced vertical typographic rhythm with elegant
+              left & right breathing room away from the ornate arch borders
               ========================================================= */}
-          <div className="relative inset-0 z-20 flex flex-col items-center justify-center text-center pt-[17%] pb-[11%] px-[6%] sm:px-[9%] overflow-hidden gap-2 sm:gap-3 h-full">
-            {/* Center Candlelight Warm Glow behind Names */}
+          <div className="relative inset-0 z-20 flex flex-col items-center justify-center text-center pt-[17%] pb-[11%] px-[10%] sm:px-[13%] md:px-[15%] overflow-hidden gap-1.5 sm:gap-2.5 h-full">
+            {/* Center Candlelight Warm Glow behind Names (Continuous Ambient Pulse) */}
             <motion.div
               animate={{
-                opacity: [0.35, 0.65, 0.35],
-                scale: [0.98, 1.02, 0.98],
+                opacity: [0.35, 0.7, 0.35],
+                scale: [0.96, 1.04, 0.96],
               }}
               transition={{
-                duration: 5,
+                duration: 4.5,
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full pointer-events-none -z-1"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-72 sm:h-72 rounded-full pointer-events-none -z-1"
               style={{
                 background:
-                  'radial-gradient(circle, rgba(255, 250, 230, 0.85) 0%, rgba(248, 235, 205, 0.35) 45%, transparent 70%)',
-                filter: 'blur(16px)',
+                  'radial-gradient(circle, rgba(255, 250, 230, 0.9) 0%, rgba(248, 235, 205, 0.4) 45%, transparent 72%)',
               }}
             />
 
-            {/* 1. BISMILLAH CALLIGRAPHY (Crisp, Top-Centered) */}
+            {/* 1. BISMILLAH CALLIGRAPHY (Crisp, Top-Centered with left-right margins) */}
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.4, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full flex flex-col items-center justify-center max-w-[280px] sm:max-w-[320px] mx-auto"
+              className="w-full flex flex-col items-center justify-center max-w-[250px] sm:max-w-[290px] mx-auto px-2"
             >
               <p
                 dir="rtl"
-                className="font-arabic text-sm sm:text-base md:text-lg text-[#2E070F] tracking-wider leading-relaxed font-bold drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]"
+                className="font-arabic text-xs sm:text-sm md:text-[15px] text-[#2E070F] tracking-wider leading-relaxed font-bold drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]"
               >
                 بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
               </p>
-              <p className="font-luxury italic text-[10px] sm:text-[11.5px] md:text-xs text-[#5C1A25] tracking-[0.14em] mt-1 max-w-[260px] mx-auto leading-normal font-medium">
+              <p className="font-luxury italic text-[9px] sm:text-[10px] md:text-[11px] text-[#5C1A25] tracking-[0.11em] mt-0.5 max-w-[230px] sm:max-w-[260px] mx-auto leading-normal font-medium">
                 In the Name of Allah, the Most Gracious, the Most Merciful
               </p>
             </motion.div>
 
             {/* 2. HEADER: "the ENGAGEMENT of" */}
             <motion.div
-              initial={{ opacity: 0, y: 8 }}
+              initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col items-center"
+              className="flex flex-col items-center px-2"
             >
-              <span className="font-luxury italic text-xs sm:text-[13.5px] text-[#7A4952] tracking-[0.25em]">
+              <span className="font-luxury italic text-[11px] sm:text-xs text-[#7A4952] tracking-[0.22em]">
                 the
               </span>
-              <h2 className="font-cinzel text-sm sm:text-base md:text-lg tracking-[0.32em] text-[#3D141C] uppercase font-bold my-0.5 sm:my-1">
+              <h2 className="font-cinzel text-xs sm:text-sm md:text-[15px] tracking-[0.28em] text-[#3D141C] uppercase font-bold my-0.5">
                 Engagement
               </h2>
-              <span className="font-luxury italic text-xs sm:text-[13.5px] text-[#7A4952] tracking-[0.25em]">
+              <span className="font-luxury italic text-[11px] sm:text-xs text-[#7A4952] tracking-[0.22em]">
                 of
               </span>
             </motion.div>
 
-            {/* 3. COUPLE NAMES: Stacked Vertically */}
+            {/* 3. COUPLE NAMES: Stacked Vertically with generous left/right margins */}
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.6, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col items-center w-full my-0.5"
+              className="flex flex-col items-center w-full my-0.5 px-3 max-w-[92%]"
             >
-              <h1 className="font-cinzel text-2xl sm:text-3xl md:text-4xl tracking-[0.18em] sm:tracking-[0.24em] text-[#541421] font-bold uppercase leading-tight drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]">
+              <h1 className="font-cinzel text-xl sm:text-2xl md:text-[27px] tracking-[0.14em] sm:tracking-[0.18em] text-[#541421] font-bold uppercase leading-tight drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]">
                 Thamim Ansari
               </h1>
 
-              {/* Elegant Ampersand with pleasant vertical breathing space */}
-              <div className="flex items-center justify-center my-1 sm:my-1.5">
-                <span className="font-luxury italic text-xl sm:text-2xl md:text-3xl text-[#721B29] font-normal leading-none">
+              <div className="flex items-center justify-center my-0.5 sm:my-1">
+                <span className="font-luxury italic text-lg sm:text-xl md:text-2xl text-[#721B29] font-normal leading-none">
                   &amp;
                 </span>
               </div>
 
-              <h1 className="font-cinzel text-2xl sm:text-3xl md:text-4xl tracking-[0.18em] sm:tracking-[0.24em] text-[#541421] font-bold uppercase leading-tight drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]">
+              <h1 className="font-cinzel text-xl sm:text-2xl md:text-[27px] tracking-[0.14em] sm:tracking-[0.18em] text-[#541421] font-bold uppercase leading-tight drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]">
                 Nihal
               </h1>
 
-              {/* Auspicious Date in Good Contrast Color - Vertical Layout */}
-              <div className="flex flex-col items-center mt-2.5 sm:mt-3 gap-0.5 sm:gap-1 text-center">
-                <p className="font-cinzel text-[11px] sm:text-[12.5px] md:text-sm text-[#4A0D17] font-bold tracking-[0.16em] uppercase drop-shadow-[0_1px_1px_rgba(255,255,255,0.85)]">
+              {/* Gregorian Event Date */}
+              <div className="flex flex-col items-center mt-2 sm:mt-2.5 gap-0.5 text-center px-2">
+                <p className="font-cinzel text-[10px] sm:text-[11.5px] md:text-xs text-[#4A0D17] font-bold tracking-[0.14em] uppercase drop-shadow-[0_1px_1px_rgba(255,255,255,0.85)]">
                   Saturday, 26 September 2026
                 </p>
                 {/* Islamic Hijri Date - Vertically Stacked Below */}
-                <p className="font-luxury italic text-[11.5px] sm:text-[13px] md:text-[14px] text-[#5A1421] font-bold tracking-[0.12em] drop-shadow-[0_1px_1px_rgba(255,255,255,0.85)]">
+                <p className="font-luxury italic text-[10.5px] sm:text-xs md:text-[13px] text-[#5A1421] font-bold tracking-[0.1em] drop-shadow-[0_1px_1px_rgba(255,255,255,0.85)]">
                   14 Rabi&apos; al-Awwal 1448 AH
                 </p>
               </div>
             </motion.div>
 
             {/* Subtle Divider with Red Wine & Gold Diamond */}
-            <div className="flex items-center justify-center gap-2 my-0.5 sm:my-1">
-              <div className="w-9 sm:w-14 h-[1px] bg-gradient-to-r from-transparent to-[#721B29]/40" />
+            <div className="flex items-center justify-center gap-2 my-0.5">
+              <div className="w-8 sm:w-12 h-[1px] bg-gradient-to-r from-transparent to-[#721B29]/40" />
               <div className="w-1.5 h-1.5 rotate-45 border border-[#B38327] bg-[#721B29]" />
-              <div className="w-9 sm:w-14 h-[1px] bg-gradient-to-l from-transparent to-[#721B29]/40" />
+              <div className="w-8 sm:w-12 h-[1px] bg-gradient-to-l from-transparent to-[#721B29]/40" />
             </div>
 
-            {/* 4. QURANIC VERSE */}
+            {/* 4. QURANIC VERSE with generous left/right breathing space */}
             <motion.div
-              initial={{ opacity: 0, y: 8 }}
+              initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.6, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full flex flex-col items-center"
+              className="w-full flex flex-col items-center px-4 max-w-[260px] sm:max-w-[300px] mx-auto"
             >
-              <p className="font-luxury italic text-sm sm:text-base md:text-lg text-[#42151D] font-medium leading-snug px-1 drop-shadow-[0_1px_2px_rgba(255,255,255,0.85)]">
+              <p className="font-luxury italic text-xs sm:text-sm md:text-[15px] text-[#42151D] font-medium leading-snug drop-shadow-[0_1px_2px_rgba(255,255,255,0.85)]">
                 “And We created you in pairs”
               </p>
-              <p className="font-cinzel text-[9.5px] sm:text-[10.5px] md:text-xs tracking-[0.24em] text-[#80424D] mt-1 uppercase font-semibold">
+              <p className="font-cinzel text-[8.5px] sm:text-[9.5px] md:text-[10.5px] tracking-[0.2em] text-[#80424D] mt-0.5 uppercase font-semibold">
                 Surah An-Naba (78 : 8)
               </p>
             </motion.div>
