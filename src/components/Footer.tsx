@@ -33,7 +33,7 @@ export function Footer({ onReplayIntro }: Props) {
 
         {/* Date */}
         <p className="font-sans-clean text-xs tracking-[0.3em] text-[#7A695A] uppercase mt-6 mb-8">
-          26 September 2026 · Saturday Morning (9:00 AM – 4:00 PM)
+          26 September 2026 · Saturday Morning (10:00 AM – 2:00 PM)
         </p>
 
         {/* Replay Intro Button */}

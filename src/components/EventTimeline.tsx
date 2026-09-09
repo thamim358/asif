@@ -5,7 +5,7 @@ export function EventTimeline() {
   const events = [
     {
       title: 'Arrival & Welcome Reception',
-      time: '9:00 AM',
+      time: '10:00 AM',
       desc: 'Guest arrivals, welcome refreshments & morning sharbat',
       icon: Clock,
     },
@@ -24,7 +24,7 @@ export function EventTimeline() {
     },
     {
       title: 'Celebratory Grand Feast',
-      time: '12:30 PM – 4:00 PM',
+      time: '12:30 PM – 2:00 PM',
       desc: 'Exquisite traditional banquet feast & celebratory desserts',
       icon: UtensilsCrossed,
     },

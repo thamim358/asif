@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback, MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Volume2, VolumeX, Sparkles } from 'lucide-react';
+import { Volume2, VolumeX } from 'lucide-react';
 
 interface Props {
   onComplete: () => void;
@@ -158,41 +158,42 @@ export function CinematicVideoIntro({ onComplete }: Props) {
             ========================================================= */}
         <AnimatePresence>
           {!isPlaying && (
-            <motion.button
-              id="wax-seal-invisible-button"
-              type="button"
-              onClick={handlePlayVideo}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="absolute z-30 rounded-full cursor-pointer focus:outline-none"
-              style={{
-                left: '50.3%',
-                top: '50.6%',
-                transform: 'translate(-50%, -50%)',
-                width: '32%',
-                height: '20%',
-                background: 'transparent',
-              }}
-              aria-label="Wax seal trigger"
-            />
+            <>
+              <motion.button
+                id="wax-seal-invisible-button"
+                type="button"
+                onClick={handlePlayVideo}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="absolute z-30 rounded-full cursor-pointer focus:outline-none"
+                style={{
+                  left: '50.3%',
+                  top: '50.6%',
+                  transform: 'translate(-50%, -50%)',
+                  width: '32%',
+                  height: '20%',
+                  background: 'transparent',
+                }}
+                aria-label="Wax seal trigger"
+              />
+              <motion.p
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.45, delay: 0.15 }}
+                className="absolute z-30 left-1/2 top-[62%] -translate-x-1/2 whitespace-nowrap pointer-events-none font-cinzel text-[9px] sm:text-[10px] tracking-[0.24em] uppercase text-[#F5E2C4] drop-shadow-[0_1px_3px_rgba(0,0,0,0.85)]"
+              >
+                Tap to Open
+              </motion.p>
+            </>
           )}
         </AnimatePresence>
 
         {/* Controls during playback: Quick Skip and Mute Toggle */}
         {isPlaying && (
-          <div className="absolute top-4 inset-x-4 flex items-center justify-between z-40 pointer-events-auto">
-            {/* Direct Skip button to go next immediately */}
-            <button
-              onClick={handleFinish}
-              type="button"
-              className="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-[#ECC170]/40 text-[#F5E2C4] text-[11px] font-cinzel tracking-[0.18em] uppercase hover:bg-black/80 hover:text-white transition-all flex items-center gap-1.5 shadow-lg cursor-pointer"
-            >
-              <Sparkles className="w-3 h-3 text-[#ECC170]" />
-              <span>Open Invitation</span>
-            </button>
-
+          <div className="absolute top-4 inset-x-4 flex items-center justify-end z-40 pointer-events-auto">
             {/* Mute Toggle button */}
             <button
               onClick={toggleMute}

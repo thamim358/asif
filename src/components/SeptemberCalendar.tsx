@@ -3,8 +3,8 @@ import { motion } from 'motion/react';
 import { Calendar, Clock, Sparkles, Heart } from 'lucide-react';
 
 export function SeptemberCalendar() {
-  // Target: Saturday, September 26, 2026 at 09:00:00 IST (UTC+5:30)
-  const targetTime = new Date('2026-09-26T09:00:00+05:30').getTime();
+  // Target: Saturday, September 26, 2026 at 10:00:00 IST (UTC+5:30)
+  const targetTime = new Date('2026-09-26T10:00:00+05:30').getTime();
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -41,7 +41,7 @@ export function SeptemberCalendar() {
     const location = encodeURIComponent(
       'Royal Mahal, 175, Erukkenchery High Rd, Sharma Nagar, Vyasarpadi, Chennai, Tamil Nadu 600039'
     );
-    const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=20260926T033000Z/20260926T103000Z`;
+    const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=20260926T043000Z/20260926T083000Z`;
     window.open(gCalUrl, '_blank');
   };
 
@@ -167,7 +167,7 @@ export function SeptemberCalendar() {
                 Saturday, 26 September 2026
               </p>
               <p className="font-sans-clean text-[11px] text-[#721B29] font-semibold">
-                Morning 9:00 AM to 4:00 PM
+                Morning 10:00 AM to 2:00 PM
               </p>
             </div>
           </div>

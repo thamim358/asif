@@ -23,7 +23,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
       navigator
         .share({
           title: 'Thamim & Nihal - Engagement Invitation',
-          text: '“And We created you in pairs” - You are cordially invited to celebrate the blessed Engagement Ceremony of Thamim Ansari & Nihal on Saturday morning, September 26, 2026 (9:00 AM – 4:00 PM) at Royal Mahal, Chennai.',
+          text: '“And We created you in pairs” - You are cordially invited to celebrate the blessed Engagement Ceremony of Thamim Ansari & Nihal on Saturday morning, September 26, 2026 (10:00 AM – 2:00 PM) at Royal Mahal, Chennai.',
           url: window.location.href,
         })
         .catch(() => {});
@@ -43,11 +43,11 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
   const handleCalendarAdd = () => {
     const title = encodeURIComponent('The Engagement of Thamim Ansari & Nihal');
     const details = encodeURIComponent(
-      'Cordially invited to celebrate the blessed Engagement Ceremony of Thamim Ansari & Nihal at Royal Mahal, Vyasarpadi, Chennai. Timing: Morning 9:00 AM to 4:00 PM.'
+      'Cordially invited to celebrate the blessed Engagement Ceremony of Thamim Ansari & Nihal at Royal Mahal, Vyasarpadi, Chennai. Timing: Morning 10:00 AM to 2:00 PM.'
     );
     const location = encodeURIComponent(`${venueName}, ${venueAddress}`);
-    // Saturday, 26 September 2026: 09:00 to 16:00 IST (03:30 to 10:30 UTC)
-    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=20260926T033000Z/20260926T103000Z&details=${details}&location=${location}`;
+    // Saturday, 26 September 2026: 10:00 to 14:00 IST (04:30 to 08:30 UTC)
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=20260926T043000Z/20260926T083000Z&details=${details}&location=${location}`;
     window.open(googleCalendarUrl, '_blank');
   };
 
@@ -176,7 +176,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
               </p>
             </div>
             <p className="font-cinzel text-[11px] sm:text-xs text-[#721B29] font-bold tracking-wide uppercase">
-              Morning 9:00 AM – 4:00 PM
+              Morning 10:00 AM – 2:00 PM
             </p>
             <p className="font-luxury italic text-xs sm:text-sm text-[#721B29] font-bold tracking-wide">
               14 Rabi&apos; al-Awwal 1448 AH
@@ -235,7 +235,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
 
                 <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF5EE] border border-[#E7D6C2] text-[11px] sm:text-xs font-cinzel text-[#721B29] tracking-wider shrink-0 ml-auto sm:ml-0 font-semibold">
                   <Clock className="w-3.5 h-3.5 text-[#721B29] shrink-0" />
-                  <span>9:00 AM Onwards</span>
+                  <span>10:00 AM Onwards</span>
                 </div>
               </div>
 
@@ -256,7 +256,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
                 </span>
               </div>
               <span className="relative z-10 font-cinzel tracking-wider text-white font-semibold shrink-0 bg-[#721B29] px-2 py-0.5 rounded border border-[#58141F] text-[11px] sm:text-xs">
-                9:00 AM
+                10:00 AM
               </span>
             </div>
           </motion.div>
@@ -299,7 +299,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
 
                 <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF5EE] border border-[#E7D6C2] text-[11px] sm:text-xs font-cinzel text-[#721B29] tracking-wider shrink-0 ml-auto sm:ml-0 font-semibold">
                   <Clock className="w-3.5 h-3.5 text-[#721B29] shrink-0" />
-                  <span>12:00 PM – 4:00 PM</span>
+                  <span>12:00 PM – 2:00 PM</span>
                 </div>
               </div>
 
@@ -307,7 +307,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
                 Felicitations &amp; Grand Feast
               </h4>
               <p className="font-luxury italic text-xs sm:text-sm md:text-base text-[#6E5E4E] mt-2 leading-relaxed">
-                Joyful gathering of family and friends, congratulatory felicitations, photography, followed by the grand traditional lunch feast continuing till 4:00 PM.
+                Joyful gathering of family and friends, congratulatory felicitations, photography, followed by the grand traditional lunch feast continuing till 2:00 PM.
               </p>
             </div>
 
@@ -503,7 +503,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
           Thamim Ansari &amp; Nihal · Engagement Celebration
         </p>
         <p className="font-luxury italic text-xs text-[#9E8B75] mt-1">
-          Saturday, 26 September 2026 · 9:00 AM – 4:00 PM · Royal Mahal, Chennai, India
+          Saturday, 26 September 2026 · 10:00 AM – 2:00 PM · Royal Mahal, Chennai, India
         </p>
 
         {onReplay && (

@@ -3,8 +3,8 @@ import { motion } from 'motion/react';
 import { Calendar, Download } from 'lucide-react';
 
 export function DateReveal() {
-  // Target date: September 26, 2026, 09:00:00 (Saturday Morning - Chennai / IST)
-  const targetTime = new Date('2026-09-26T09:00:00+05:30').getTime();
+  // Target date: September 26, 2026, 10:00:00 (Saturday Morning - Chennai / IST)
+  const targetTime = new Date('2026-09-26T10:00:00+05:30').getTime();
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -45,8 +45,8 @@ export function DateReveal() {
       'SUMMARY:The Engagement of Thamim Ansari & Nihal',
       'DESCRIPTION:Join us to celebrate the blessed engagement of Thamim Ansari & Nihal at Royal Mahal, Chennai.',
       'LOCATION:Royal Mahal, 175, Erukkenchery High Rd, Sharma Nagar, Vyasarpadi, Chennai, Tamil Nadu 600039',
-      'DTSTART:20260926T033000Z',
-      'DTEND:20260926T103000Z',
+      'DTSTART:20260926T043000Z',
+      'DTEND:20260926T083000Z',
       'STATUS:CONFIRMED',
       'END:VEVENT',
       'END:VCALENDAR',
@@ -64,12 +64,12 @@ export function DateReveal() {
   const handleGoogleCalendar = () => {
     const title = encodeURIComponent('The Engagement of Thamim Ansari & Nihal');
     const details = encodeURIComponent(
-      'Together with their families, cordially request the pleasure of your company to celebrate their blessed Engagement Ceremony at Royal Mahal, Chennai. Timing: Morning 9:00 AM to 4:00 PM.'
+      'Together with their families, cordially request the pleasure of your company to celebrate their blessed Engagement Ceremony at Royal Mahal, Chennai. Timing: Morning 10:00 AM to 2:00 PM.'
     );
     const location = encodeURIComponent(
       'Royal Mahal, 175, Erukkenchery High Rd, Sharma Nagar, Vyasarpadi, Chennai, Tamil Nadu 600039'
     );
-    const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=20260926T033000Z/20260926T103000Z`;
+    const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=20260926T043000Z/20260926T083000Z`;
     window.open(gCalUrl, '_blank');
   };
 
@@ -143,7 +143,7 @@ export function DateReveal() {
 
         {/* Day of Week */}
         <p className="font-cinzel text-sm sm:text-base tracking-[0.45em] text-[#C9A86A] uppercase font-semibold mt-4">
-          Saturday Morning (9:00 AM – 4:00 PM)
+          Saturday Morning (10:00 AM – 2:00 PM)
         </p>
       </motion.div>
 

@@ -352,7 +352,7 @@ export function RsvpSection() {
                   </p>
                 )}
                 <p>
-                  Event Date: <span className="font-semibold text-[#2C231A]">Saturday, September 26, 2026 (Morning 9:00 AM – 4:00 PM)</span>
+                  Event Date: <span className="font-semibold text-[#2C231A]">Saturday, September 26, 2026 (Morning 10:00 AM – 2:00 PM)</span>
                 </p>
               </div>
 
