@@ -19,12 +19,24 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
   const embedMapUrl = `https://maps.google.com/maps?q=${encodedVenue}&t=&z=16&ie=UTF8&iwloc=&output=embed`;
 
   const handleShare = async () => {
-    const shareText =
-      'Dear family and friends, you are warmly invited to celebrate the engagement of Thamim Ansari and Nihal on Saturday, 26 September 2026, from 10:00 AM to 2:00 PM at Royal Mahal, Chennai.';
+    const shareUrl = window.location.href;
+    const shareText = [
+      '\u{1F490} *Engagement Invitation* \u{1F490}',
+      '',
+      '*Thamim Ansari & Nihal*',
+      'Together with our families, we warmly invite you to celebrate our engagement.',
+      '',
+      '\u{1F4C5} *Saturday, 26 September 2026*',
+      '\u{1F552} *10:00 AM - 2:00 PM*',
+      '\u{1F4CD} *Royal Mahal, Chennai*',
+      '',
+      '\u{1F64F} Your presence and blessings would mean so much to us.',
+      '',
+      shareUrl,
+    ].join('\n');
     const shareData = {
       title: 'Thamim & Nihal - Engagement Invitation',
       text: shareText,
-      url: window.location.href,
     };
 
     if (navigator.share) {
@@ -45,7 +57,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
 
       navigator.share(shareData).catch(() => {});
     } else {
-      navigator.clipboard.writeText(`${shareText}\n\n${window.location.href}`);
+      navigator.clipboard.writeText(shareText);
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
     }
