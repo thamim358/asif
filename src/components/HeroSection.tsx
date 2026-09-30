@@ -41,7 +41,7 @@ export function HeroSection({
           {/* Subtle button golden glow border */}
           <span className="absolute inset-0 rounded-full border border-[#ECC170]/40 pointer-events-none" />
           <Calendar className="w-3.5 h-3.5 text-[#FAD5DC]" />
-          <span>View Engagement &amp; Venue Details</span>
+          <span>View Nikkah &amp; Venue Details</span>
         </button>
 
         <div
@@ -49,7 +49,7 @@ export function HeroSection({
           className="cursor-pointer group flex flex-col items-center"
         >
           <span className="font-cinzel text-[10px] sm:text-[11px] tracking-[0.28em] text-[#7A4B53] uppercase group-hover:text-[#721B29] transition-colors mb-1.5 font-medium">
-            Scroll for Engagement Program &amp; Duas
+            Scroll for Nikkah Details &amp; Duas
           </span>
           <div className="w-7 h-7 rounded-full border border-[#721B29]/40 flex items-center justify-center text-[#721B29] group-hover:border-[#721B29] group-hover:bg-[#721B29]/10 transition-all">
             <ChevronDown className="w-3.5 h-3.5 animate-bounce" />

@@ -3,8 +3,8 @@ import { motion } from 'motion/react';
 import { Calendar, Clock, Sparkles, Heart } from 'lucide-react';
 
 export function SeptemberCalendar() {
-  // Target: Saturday, September 26, 2026 at 10:00:00 IST (UTC+5:30)
-  const targetTime = new Date('2026-09-26T10:00:00+05:30').getTime();
+  // Target: Sunday, October 25, 2026 at 10:30:00 IST (UTC+5:30)
+  const targetTime = new Date('2026-10-25T10:30:00+05:30').getTime();
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -34,22 +34,22 @@ export function SeptemberCalendar() {
   }, [targetTime]);
 
   const handleGoogleCalendar = () => {
-    const title = encodeURIComponent('The Engagement of Thamim Ansari & Nihal');
+    const title = encodeURIComponent('Nikkah of H. Mohammed Asif & N. Sania Nafeesa');
     const details = encodeURIComponent(
-      'Together with their families, cordially invite you to celebrate the blessed Engagement Ceremony of Thamim Ansari & Nihal at Royal Mahal, Chennai.'
+      'Cordially invited to the Nikkah of H. Mohammed Asif and N. Sania Nafeesa at New College Auditorium, Royapettah, Chennai.'
     );
     const location = encodeURIComponent(
-      'Royal Mahal, 175, Erukkenchery High Rd, Sharma Nagar, Vyasarpadi, Chennai, Tamil Nadu 600039'
+      "New College Auditorium, Nikkah New College Mosque, Peter's Road, Royapettah, Chennai - 14"
     );
-    const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=20260926T043000Z/20260926T083000Z`;
+    const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=20261025T050000Z/20261025T060000Z`;
     window.open(gCalUrl, '_blank');
   };
 
-  // September 2026: starts on Tuesday (2 leading blanks: Sun, Mon)
-  // Total days = 30
+  // October 2026: starts on Thursday (4 leading blanks: Sun–Wed)
+  // Total days = 31
   const daysOfWeek = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-  const blanks = [null, null]; // Sun, Mon
-  const daysInMonth = Array.from({ length: 30 }, (_, i) => i + 1);
+  const blanks = [null, null, null, null]; // Sun–Wed
+  const daysInMonth = Array.from({ length: 31 }, (_, i) => i + 1);
   const calendarCells = [...blanks, ...daysInMonth];
 
   return (
@@ -79,17 +79,17 @@ export function SeptemberCalendar() {
             <div className="flex items-center gap-2">
               <Calendar className="w-5 h-5 text-[#721B29]" />
               <h4 className="font-cinzel text-lg sm:text-xl font-bold uppercase tracking-[0.2em] text-[#2E070F]">
-                September 2026
+                October 2026
               </h4>
             </div>
             <p className="font-luxury italic text-xs sm:text-sm text-[#721B29] font-medium mt-0.5 tracking-wide">
-              14 Rabi&apos; al-Awwal 1448 AH · Auspicious Islamic Date
+              13 Jamathul Awwal 1448 AH · Auspicious Islamic Date
             </p>
           </div>
 
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#721B29] text-white text-[11px] sm:text-xs font-cinzel font-semibold tracking-wider self-start sm:self-auto shadow-sm">
             <Heart className="w-3.5 h-3.5 fill-[#FAD5DC] text-[#FAD5DC]" />
-            <span>Saturday 26th</span>
+            <span>Sunday 25th</span>
           </div>
         </div>
 
@@ -116,8 +116,8 @@ export function SeptemberCalendar() {
                 return <div key={`blank-${idx}`} className="h-9 sm:h-10" />;
               }
 
-              const isEventDay = day === 26;
-              const isSaturday = (idx % 7) === 6;
+              const isEventDay = day === 25;
+              const isSunday = (idx % 7) === 0;
 
               return (
                 <div
@@ -132,9 +132,9 @@ export function SeptemberCalendar() {
                         animate={{ scale: [1, 1.06, 1] }}
                         transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
                         className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#721B29] text-white flex flex-col items-center justify-center font-cinzel font-bold text-xs sm:text-sm shadow-[0_4px_12px_rgba(114,27,41,0.45)] ring-2 ring-[#C9A048] ring-offset-1 z-10 cursor-pointer"
-                        title="Saturday, September 26, 2026 - Engagement Ceremony"
+                        title="Sunday, October 25, 2026 - Nikkah Ceremony"
                       >
-                        <span>26</span>
+                        <span>25</span>
                       </motion.div>
                       {/* Little star badge */}
                       <span className="absolute -top-1 -right-0.5 w-2.5 h-2.5 rounded-full bg-[#C9A048] flex items-center justify-center shadow-xs">
@@ -144,7 +144,7 @@ export function SeptemberCalendar() {
                   ) : (
                     <span
                       className={`font-sans-clean text-xs sm:text-sm font-semibold rounded-lg w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center transition-colors ${
-                        isSaturday
+                        isSunday
                           ? 'text-[#721B29] bg-[#721B29]/5 font-bold'
                           : 'text-[#2C2118] hover:bg-[#F6EFE6]'
                       }`}
@@ -164,16 +164,16 @@ export function SeptemberCalendar() {
             <div className="w-2.5 h-2.5 rounded-full bg-[#721B29] shrink-0 ring-2 ring-[#721B29]/30" />
             <div>
               <p className="font-cinzel text-xs sm:text-sm text-[#2E070F] font-bold tracking-wide">
-                Saturday, 26 September 2026
+                Sunday, 25 October 2026
               </p>
               <p className="font-sans-clean text-[11px] text-[#721B29] font-semibold">
-                Morning 10:00 AM to 2:00 PM
+                Around 10:30 AM to 11:30 AM
               </p>
             </div>
           </div>
           <div className="text-right shrink-0">
             <span className="px-2.5 py-1 rounded-md bg-[#721B29] text-white font-cinzel text-[10px] uppercase font-bold tracking-wider">
-              Ceremony
+              Nikkah
             </span>
           </div>
         </div>

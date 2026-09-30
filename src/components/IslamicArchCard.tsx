@@ -266,7 +266,7 @@ export function IslamicArchCard({ isRevealed = true }: Props) {
               <h2
                 className={`font-cinzel ${activePreset.headerEngagement} text-[#3D141C] uppercase font-bold my-0.5`}
               >
-                Engagement
+                Nikkah (Wedding)
               </h2>
               <span className={`font-luxury italic ${activePreset.headerTheOf} text-[#7A4952]`}>
                 of
@@ -283,7 +283,7 @@ export function IslamicArchCard({ isRevealed = true }: Props) {
               <h1
                 className={`font-cinzel ${activePreset.coupleName} text-[#541421] font-bold uppercase leading-tight drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]`}
               >
-                Thamim Ansari
+                H. Mohammed Asif
               </h1>
 
               <div className="flex items-center justify-center my-0.5 sm:my-1">
@@ -297,7 +297,7 @@ export function IslamicArchCard({ isRevealed = true }: Props) {
               <h1
                 className={`font-cinzel ${activePreset.coupleName} text-[#541421] font-bold uppercase leading-tight drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)] mb-1 sm:mb-1.5`}
               >
-                Nihal
+                N. Sania Nafeesa
               </h1>
 
               {/* Gregorian Event Date */}
@@ -305,13 +305,13 @@ export function IslamicArchCard({ isRevealed = true }: Props) {
                 <p
                   className={`font-cinzel ${activePreset.gregorianDate} text-[#4A0D17] font-bold uppercase drop-shadow-[0_1px_1px_rgba(255,255,255,0.85)]`}
                 >
-                  Saturday, 26 September 2026
+                  Sunday, 25 October 2026
                 </p>
                 {/* Islamic Hijri Date - Vertically Stacked Below */}
                 <p
                   className={`font-luxury italic ${activePreset.hijriDate} text-[#5A1421] font-bold drop-shadow-[0_1px_1px_rgba(255,255,255,0.85)]`}
                 >
-                  14 Rabi&apos; al-Awwal 1448 AH
+                  13 Jamathul Awwal 1448 AH
                 </p>
               </div>
             </motion.div>

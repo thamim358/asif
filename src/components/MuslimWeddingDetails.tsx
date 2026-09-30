@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { MapPin, Calendar, Navigation, Share2, Clock, Copy, Check, ExternalLink } from 'lucide-react';
+import { MapPin, Calendar, Navigation, Clock, Copy, Check, ExternalLink } from 'lucide-react';
 import { SeptemberCalendar } from './SeptemberCalendar';
 
 interface Props {
@@ -8,60 +8,14 @@ interface Props {
 }
 
 export function MuslimWeddingDetails({ onReplay }: Props) {
-  const [copied, setCopied] = useState(false);
   const [addressCopied, setAddressCopied] = useState(false);
 
-  const venueName = 'Royal Mahal';
-  const venueAddress = '175, Erukkenchery High Rd, Sharma Nagar, Vyasarpadi, Chennai, Tamil Nadu 600039';
+  const venueName = 'New College Auditorium';
+  const venueAddress = "Nikkah New College Mosque, Peter's Road, Royapettah, Chennai - 14";
   const encodedVenue = encodeURIComponent(`${venueName}, ${venueAddress}`);
   const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodedVenue}`;
   const mapsSearchUrl = `https://www.google.com/maps/search/?api=1&query=${encodedVenue}`;
   const embedMapUrl = `https://maps.google.com/maps?q=${encodedVenue}&t=&z=16&ie=UTF8&iwloc=&output=embed`;
-
-  const handleShare = async () => {
-    const shareUrl = window.location.href;
-    const shareText = [
-      '\u{1F490} *Engagement Invitation* \u{1F490}',
-      '',
-      '*Thamim Ansari & Nihal*',
-      'Together with our families, we warmly invite you to celebrate our engagement.',
-      '',
-      '\u{1F4C5} *Saturday, 26 September 2026*',
-      '\u{1F552} *10:00 AM - 2:00 PM*',
-      '\u{1F4CD} *Royal Mahal, Chennai*',
-      '',
-      '\u{1F64F} Your presence and blessings would mean so much to us.',
-      '',
-      shareUrl,
-    ].join('\n');
-    const shareData = {
-      title: 'Thamim & Nihal - Engagement Invitation',
-      text: shareText,
-    };
-
-    if (navigator.share) {
-      try {
-        const imageResponse = await fetch('/engagement_share.png');
-        const imageBlob = await imageResponse.blob();
-        const imageFile = new File([imageBlob], 'thamim-nihal-engagement.png', {
-          type: 'image/png',
-        });
-
-        if (navigator.canShare?.({ files: [imageFile] })) {
-          await navigator.share({ ...shareData, files: [imageFile] });
-          return;
-        }
-      } catch {
-        // File sharing is optional; the URL preview remains available below.
-      }
-
-      navigator.share(shareData).catch(() => {});
-    } else {
-      navigator.clipboard.writeText(shareText);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2500);
-    }
-  };
 
   const handleCopyAddress = () => {
     navigator.clipboard.writeText(`${venueName}, ${venueAddress}`);
@@ -70,13 +24,13 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
   };
 
   const handleCalendarAdd = () => {
-    const title = encodeURIComponent('The Engagement of Thamim Ansari & Nihal');
+    const title = encodeURIComponent('Nikkah of H. Mohammed Asif & N. Sania Nafeesa');
     const details = encodeURIComponent(
-      'Cordially invited to celebrate the blessed Engagement Ceremony of Thamim Ansari & Nihal at Royal Mahal, Vyasarpadi, Chennai. Timing: Morning 10:00 AM to 2:00 PM.'
+      'Cordially invited to the Nikkah of H. Mohammed Asif and N. Sania Nafeesa at New College Auditorium, Royapettah, Chennai. Timing: 10:30 AM to 11:30 AM.'
     );
     const location = encodeURIComponent(`${venueName}, ${venueAddress}`);
-    // Saturday, 26 September 2026: 10:00 to 14:00 IST (04:30 to 08:30 UTC)
-    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=20260926T043000Z/20260926T083000Z&details=${details}&location=${location}`;
+    // Sunday, 25 October 2026: 10:30 to 11:30 IST (05:00 to 06:00 UTC)
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=20261025T050000Z/20261025T060000Z&details=${details}&location=${location}`;
     window.open(googleCalendarUrl, '_blank');
   };
 
@@ -127,17 +81,17 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
           className="space-y-3 max-w-xl mx-auto transform-gpu"
         >
           <p className="font-cinzel text-xs sm:text-sm tracking-[0.24em] text-[#8C7654] uppercase">
-            Together with their families
+            Mrs. &amp; Mr. A. Harun Basha, B.A., and Mrs. &amp; Mr. Nagoor Meeran
           </p>
           <p className="font-luxury italic text-base sm:text-lg md:text-xl text-[#524436]">
-            cordially invite you to grace the auspicious occasion and celebrate the
+            solicit your esteemed presence with your family and friends on the auspicious occasion of the
           </p>
           <div className="py-1">
             <h3 className="font-cinzel text-xl sm:text-2xl md:text-3xl tracking-[0.24em] sm:tracking-[0.28em] text-[#721B29] font-semibold uppercase">
-              Engagement Ceremony
+              Nikkah (Wedding)
             </h3>
             <p className="font-luxury italic text-sm sm:text-base text-[#6B5A4B] mt-1">
-              of their beloved children
+              of their offspring
             </p>
           </div>
 
@@ -150,11 +104,11 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
             className="pt-2 transform-gpu"
           >
             <h2 className="font-cinzel text-2xl sm:text-3xl md:text-4xl tracking-[0.22em] text-[#3D3022] uppercase font-semibold">
-              Thamim Ansari
+              H. Mohammed Asif, B.B.A.
             </h2>
             <p className="font-luxury italic text-sm sm:text-base text-[#A3927C] my-1">&amp;</p>
             <h2 className="font-cinzel text-2xl sm:text-3xl md:text-4xl tracking-[0.22em] text-[#3D3022] uppercase font-semibold">
-              Nihal
+              N. Sania Nafeesa, B.A.
             </h2>
           </motion.div>
 
@@ -192,28 +146,28 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
           className="text-center mb-6 transform-gpu"
         >
           <p className="font-cinzel text-xs sm:text-sm tracking-[0.3em] text-[#721B29] uppercase font-bold">
-            Saturday Morning Program
+            Sunday Morning Program
           </p>
           <h3 className="font-cinzel text-xl sm:text-2xl md:text-3xl tracking-[0.22em] text-[#2E070F] uppercase font-bold mt-1.5">
-            Ceremony Schedule &amp; Date
+            Nikkah Schedule &amp; Date
           </h3>
           <div className="inline-flex flex-col items-center gap-1 mt-2.5 px-5 py-2.5 rounded-2xl bg-[#721B29]/8 border border-[#721B29]/25 shadow-xs">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#721B29] shrink-0 animate-pulse" />
               <p className="font-cinzel text-xs sm:text-sm text-[#4A0D17] font-bold tracking-wider">
-                Saturday, 26 September 2026
+                Sunday, 25 October 2026
               </p>
             </div>
             <p className="font-cinzel text-[11px] sm:text-xs text-[#721B29] font-bold tracking-wide uppercase">
-              Morning 10:00 AM – 2:00 PM
+              Around 10:30 AM – 11:30 AM
             </p>
             <p className="font-luxury italic text-xs sm:text-sm text-[#721B29] font-bold tracking-wide">
-              14 Rabi&apos; al-Awwal 1448 AH
+              13 Jamathul Awwal 1448 AH
             </p>
           </div>
         </motion.div>
 
-        {/* The September 2026 Calendar & Countdown */}
+        {/* The October 2026 Calendar & Countdown */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -224,7 +178,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
           <SeptemberCalendar />
         </motion.div>
 
-        {/* Engagement Schedule Cards with Smooth, Jitter-Free Entrance */}
+        {/* Nikkah schedule cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-8">
           {/* Card 1: Ring Exchange & Alliance */}
           <motion.div
@@ -264,15 +218,15 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
 
                 <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF5EE] border border-[#E7D6C2] text-[11px] sm:text-xs font-cinzel text-[#721B29] tracking-wider shrink-0 ml-auto sm:ml-0 font-semibold">
                   <Clock className="w-3.5 h-3.5 text-[#721B29] shrink-0" />
-                  <span>10:00 AM Onwards</span>
+                  <span>10:30 AM Onwards</span>
                 </div>
               </div>
 
               <h4 className="font-cinzel text-base sm:text-lg md:text-xl text-[#3D3022] uppercase tracking-[0.12em] sm:tracking-[0.16em] font-semibold leading-snug">
-                Ring Exchange &amp; Blessings
+                Nikkah Ceremony &amp; Blessings
               </h4>
               <p className="font-luxury italic text-xs sm:text-sm md:text-base text-[#6E5E4E] mt-2 leading-relaxed">
-                Welcoming of honored guests, Quranic recitation, formal engagement alliance announcement, exchange of rings, and elders&apos; blessings for the couple.
+                Welcoming of honored guests, Quranic recitation, solemnization of the Nikkah, and elders&apos; blessings for the couple.
               </p>
             </div>
 
@@ -285,12 +239,12 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
                 </span>
               </div>
               <span className="relative z-10 font-cinzel tracking-wider text-white font-semibold shrink-0 bg-[#721B29] px-2 py-0.5 rounded border border-[#58141F] text-[11px] sm:text-xs">
-                10:00 AM
+                10:30 AM
               </span>
             </div>
           </motion.div>
 
-          {/* Card 2: Engagement Reception */}
+          {/* Card 2: Nikkah felicitations */}
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -328,15 +282,15 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
 
                 <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF5EE] border border-[#E7D6C2] text-[11px] sm:text-xs font-cinzel text-[#721B29] tracking-wider shrink-0 ml-auto sm:ml-0 font-semibold">
                   <Clock className="w-3.5 h-3.5 text-[#721B29] shrink-0" />
-                  <span>12:00 PM – 2:00 PM</span>
+                  <span>11:30 AM Onwards</span>
                 </div>
               </div>
 
               <h4 className="font-cinzel text-base sm:text-lg md:text-xl text-[#3D3022] uppercase tracking-[0.12em] sm:tracking-[0.16em] font-semibold leading-snug">
-                Felicitations &amp; Grand Feast
+                Felicitations &amp; Greetings
               </h4>
               <p className="font-luxury italic text-xs sm:text-sm md:text-base text-[#6E5E4E] mt-2 leading-relaxed">
-                Joyful gathering of family and friends, congratulatory felicitations, followed by the grand traditional lunch feast continuing till 2:00 PM.
+                A joyful gathering of family and friends offering congratulations and blessings to the newly married couple.
               </p>
             </div>
 
@@ -349,7 +303,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
                 </span> */}
               </div>
               <span className="relative z-10 font-cinzel tracking-wider text-white font-semibold shrink-0 bg-[#721B29] px-2 py-0.5 rounded border border-[#58141F] text-[11px] sm:text-xs">
-                12:30 PM
+                11:30 AM
               </span>
             </div>
           </motion.div>
@@ -416,7 +370,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
             <div className="w-full h-[280px] sm:h-[360px] relative">
               <iframe
                 id="google-maps-embed-frame"
-                title="Royal Mahal Google Map"
+                title="New College Auditorium Google Map"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -482,7 +436,7 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
             Google Maps
           </p>
 
-          {/* Action Buttons: Primary Get Directions, Add to Calendar, Share */}
+          {/* Action Buttons: Primary Get Directions and Add to Calendar */}
           <div className="flex items-center justify-center gap-3 sm:gap-4 mt-6 flex-wrap">
             <a
               id="btn-get-directions"
@@ -505,15 +459,6 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
               <span>Add to Calendar</span>
             </button>
 
-            <button
-              id="btn-share-invitation"
-              type="button"
-              onClick={handleShare}
-              className="px-4 py-3 rounded-full bg-white border-2 border-[#721B29]/30 text-[#721B29] text-xs font-cinzel tracking-[0.16em] uppercase font-semibold hover:bg-[#721B29]/10 hover:border-[#721B29] transition-all flex items-center gap-1.5 shadow-sm hover:scale-105 cursor-pointer"
-            >
-              <Share2 className="w-4 h-4" />
-              <span>{copied ? 'Copied!' : 'Share'}</span>
-            </button>
           </div>
         </div>
       </motion.div>
@@ -529,10 +474,10 @@ export function MuslimWeddingDetails({ onReplay }: Props) {
         className="text-center pt-8 border-t border-[#EAE3D9]/70 transform-gpu"
       >
         <p className="font-cinzel text-[11px] tracking-[0.28em] text-[#721B29] uppercase font-semibold">
-          Thamim Ansari &amp; Nihal · Engagement Celebration
+          H. Mohammed Asif &amp; N. Sania Nafeesa · Nikkah Celebration
         </p>
         <p className="font-luxury italic text-xs text-[#9E8B75] mt-1">
-          Saturday, 26 September 2026 · 10:00 AM – 2:00 PM · Royal Mahal, Chennai, India
+          Sunday, 25 October 2026 · 10:30 AM – 11:30 AM · New College Auditorium, Royapettah, Chennai
         </p>
 
         {onReplay && (
