@@ -253,24 +253,26 @@ export function IslamicArchCard({ isRevealed = true }: Props) {
               </div>
             </motion.div>
 
-            {/* 2. HEADER: "the ENGAGEMENT of" */}
+            {/* 2. Formal Nikkah heading */}
             <motion.div
               initial={{ opacity: 0, y: 6 }}
               animate={isRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 6 }}
               transition={{ duration: 1.8, delay: 1.7, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col items-center px-2 mt-1 sm:mt-1.5"
             >
-              <span className={`font-luxury italic ${activePreset.headerTheOf} text-[#7A4952]`}>
-                the
+              <span className={`font-cinzel ${activePreset.headerTheOf} text-[#7A4952] uppercase tracking-[0.18em]`}>
+                With the blessings of our families
               </span>
               <h2
-                className={`font-cinzel ${activePreset.headerEngagement} text-[#3D141C] uppercase font-bold my-0.5`}
+                className={`font-cinzel ${activePreset.headerEngagement} text-[#3D141C] uppercase font-bold mt-1 mb-0.5`}
               >
                 Nikkah (Wedding)
               </h2>
-              <span className={`font-luxury italic ${activePreset.headerTheOf} text-[#7A4952]`}>
-                of
-              </span>
+              <div className="flex items-center gap-1.5 mt-0.5">
+                <span className="h-px w-5 bg-[#B38327]/60" />
+                <span className="w-1 h-1 rotate-45 bg-[#721B29]" />
+                <span className="h-px w-5 bg-[#B38327]/60" />
+              </div>
             </motion.div>
 
             {/* 3. COUPLE NAMES: Stacked Vertically with dedicated device padding */}
@@ -278,8 +280,11 @@ export function IslamicArchCard({ isRevealed = true }: Props) {
               initial={{ opacity: 0, y: 8 }}
               animate={isRevealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
               transition={{ duration: 2.0, delay: 2.0, ease: [0.16, 1, 0.3, 1] }}
-              className={`flex flex-col items-center w-full my-0.5 px-3 ${activePreset.contentMaxW} mx-auto`}
+              className={`flex flex-col items-center w-full my-0.5 px-3 py-2 sm:py-3 rounded-[1.4rem] border border-[#B38327]/30 bg-white/35 shadow-[0_5px_18px_rgba(92,26,37,0.07)] ${activePreset.contentMaxW} mx-auto`}
             >
+              <span className="font-cinzel text-[7px] sm:text-[8px] tracking-[0.26em] text-[#8A6D3B] uppercase mb-0.5">
+                The Groom
+              </span>
               <h1
                 className={`font-cinzel ${activePreset.coupleName} text-[#541421] font-bold uppercase leading-tight drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)]`}
               >
@@ -294,14 +299,20 @@ export function IslamicArchCard({ isRevealed = true }: Props) {
                 </span>
               </div>
 
+              <span className="font-cinzel text-[7px] sm:text-[8px] tracking-[0.26em] text-[#8A6D3B] uppercase mb-0.5">
+                The Bride
+              </span>
               <h1
                 className={`font-cinzel ${activePreset.coupleName} text-[#541421] font-bold uppercase leading-tight drop-shadow-[0_1px_2px_rgba(255,255,255,0.95)] mb-1 sm:mb-1.5`}
               >
                 N. Sania Nafeesa
               </h1>
 
-              {/* Gregorian Event Date */}
-              <div className="flex flex-col items-center mt-2.5 sm:mt-3.5 gap-1.5 sm:gap-2 text-center px-2 mb-1 sm:mb-1.5">
+              {/* Gregorian and Hijri event dates */}
+              <div className="w-full flex flex-col items-center mt-2.5 sm:mt-3.5 gap-1 sm:gap-1.5 text-center px-2 py-2 sm:py-2.5 mb-1 sm:mb-1.5 border-t border-[#B38327]/25">
+                <span className="font-cinzel text-[7px] sm:text-[8px] tracking-[0.22em] text-[#8A6D3B] uppercase">
+                  Save the date
+                </span>
                 <p
                   className={`font-cinzel ${activePreset.gregorianDate} text-[#4A0D17] font-bold uppercase drop-shadow-[0_1px_1px_rgba(255,255,255,0.85)]`}
                 >
