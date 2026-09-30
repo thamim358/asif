@@ -46,7 +46,7 @@ const DEVICE_PRESETS: Record<DeviceProfile, DevicePreset> = {
     bismillahEnglish: 'text-[13px] sm:text-[12px] tracking-[0.11em]',
     headerTheOf: 'text-[14px] sm:text-[13px] tracking-[0.22em]',
     headerEngagement: 'text-[17px] sm:text-[16px] tracking-[0.28em]',
-    coupleName: 'text-[23px] sm:text-[23px] tracking-[0.14em] sm:tracking-[0.17em]',
+    coupleName: 'text-[21px] sm:text-[22px] tracking-[0.14em] sm:tracking-[0.17em]',
     ampersand: 'text-[21px] sm:text-[21px]',
     gregorianDate: 'text-[13px] sm:text-[12px] tracking-[0.14em]',
     hijriDate: 'text-[14px] sm:text-[13px] tracking-[0.1em]',
